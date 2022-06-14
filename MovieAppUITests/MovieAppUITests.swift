@@ -1,13 +1,13 @@
 //
-//  MoviesAppUITests.swift
-//  MoviesAppUITests
+//  MovieAppUITests.swift
+//  MovieAppUITests
 //
-//  Created by Ronan Mak on 28/1/2022.
+//  Created by Ronan Mak on 14/6/2022.
 //
 
 import XCTest
 
-class MoviesAppUITests: XCTestCase {
+class MovieAppUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -27,7 +27,6 @@ class MoviesAppUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
 
-        // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 

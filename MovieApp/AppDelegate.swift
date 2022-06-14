@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  MoviesApp
+//  MovieApp
 //
-//  Created by Ronan Mak on 28/1/2022.
+//  Created by Ronan Mak on 14/6/2022.
 //
 
 import UIKit
