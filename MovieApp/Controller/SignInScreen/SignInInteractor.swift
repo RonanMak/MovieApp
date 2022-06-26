@@ -10,7 +10,8 @@ import UIKit
 
 protocol SignInBusinessLogic
 {
-//    func doSomething(request: SignIn.Something.Request)
+    func requestViewInit()
+    func requestShowPasswordButtonDidPress()
 }
 
 protocol SignInDataStore
@@ -18,20 +19,20 @@ protocol SignInDataStore
     //var name: String { get set }
 }
 
-class SignInInteractor: SignInBusinessLogic, SignInDataStore
+class SignInInteractor: SignInDataStore
 {
     var presenter: SignInPresentationLogic?
     var worker: SignInWorker?
-    //var name: String = ""
-    
-    // MARK: Do something
-    
-//    func doSomething(request: SignIn.Something.Request)
-//    {
-//        worker = SignInWorker()
-//        worker?.doSomeWork()
-//
-//        let response = SignIn.Something.Response()
-//        presenter?.presentSomething(response: response)
-//    }
+
+}
+
+extension SignInInteractor: SignInBusinessLogic {
+
+    func requestViewInit() {
+        presenter?.presentViewInit()
+    }
+
+    func requestShowPasswordButtonDidPress() {
+        
+    }
 }

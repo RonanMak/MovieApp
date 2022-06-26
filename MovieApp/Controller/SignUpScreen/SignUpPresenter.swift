@@ -10,18 +10,39 @@ import UIKit
 
 protocol SignUpPresentationLogic: AnyObject
 {
-//    func presentSomething(response: SignUp.Something.Response)
+    func presentViewInit()
 }
 
-class SignUpPresenter: SignUpPresentationLogic
+class SignUpPresenter
 {
     weak var viewController: SignUpDisplayLogic?
-    
-    // MARK: Do something
-    
-//    func presentSomething(response: SignUp.Something.Response)
-//    {
-//        let viewModel = SignUp.Something.ViewModel()
-//        viewController?.displaySomething(viewModel: viewModel)
-//    }
+}
+
+extension SignUpPresenter: SignUpPresentationLogic {
+    func presentViewInit() {
+        let logoImage = UIImage(named: "netflix-logo") ?? UIImage()
+        let carouselViewData = [
+            SignUpModel.CarouselData(image: UIImage(named: "netflix-background"),
+                                     middleText: "Unlimited movies, TV shows, and more.",
+                                     middleSubText: "Watch anywhere. Cancel anytime. Tap the link below to sign up."),
+            SignUpModel.CarouselData(image: UIImage(named: "black-background"),
+                                     middleText: "watch on any device",
+                                     middleSubText: "Stream on your phone, tablet, laptop, and TV without paying more."),
+            SignUpModel.CarouselData(image: UIImage(named: "black-background"),
+                                     middleText: "Download and go",
+                                     middleSubText: "Save your data. watch offline on a plane, train, or submarine...")
+        ]
+        let pageNumber  = 3
+
+        let viewModel = SignUpModel.ViewInit.ViewModel(
+            logoImage: logoImage,
+            signUpButtonTitle: "netflix.com/join",
+            signInButtonTitle: "Sign In",
+            privacyButtonTitle: "Privacy",
+            carouselViewData: carouselViewData,
+            homeCarouselpageNumber: pageNumber
+        )
+
+        viewController?.displayViewInit(viewModel: viewModel)
+    }
 }

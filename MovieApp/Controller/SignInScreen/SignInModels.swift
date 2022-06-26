@@ -10,18 +10,18 @@ import UIKit
 
 enum SignIn
 {
-    // MARK: Use cases
-    
-//    enum Something
-//    {
-//        struct Request
-//        {
-//        }
-//        struct Response
-//        {
-//        }
-//        struct ViewModel
-//        {
-//        }
-//    }
+    enum ViewInit {
+        struct Request {
+        }
+        struct Response {
+        }
+        struct ViewModel {
+            let emailInputPlaceholder: String
+            let passwordInputPlaceholder: String
+            let showPasswordButton: String
+            let authButtonPlaceholder: String
+            let recoverPasswordPlaceholder: String
+            let learnMoreText: String
+        }
+    }
 }

@@ -10,7 +10,7 @@ import UIKit
 
 protocol SignUpBusinessLogic: AnyObject
 {
-//    func doSomething(request: SignUp.Something.Request)
+    func requestViewInit()
 }
 
 protocol SignUpDataStore
@@ -18,20 +18,14 @@ protocol SignUpDataStore
     //var name: String { get set }
 }
 
-class SignUpInteractor: SignUpBusinessLogic, SignUpDataStore
+class SignUpInteractor: SignUpDataStore
 {
     var presenter: SignUpPresentationLogic?
     var worker: SignUpWorker?
-    //var name: String = ""
-    
-    // MARK: Do something
-    
-//    func doSomething(request: SignUp.Something.Request)
-//    {
-//        worker = SignUpWorker()
-//        worker?.doSomeWork()
-//
-//        let response = SignUp.Something.Response()
-//        presenter?.presentSomething(response: response)
-//    }
+}
+
+extension SignUpInteractor: SignUpBusinessLogic {
+    func requestViewInit() {
+        presenter?.presentViewInit()
+    }
 }

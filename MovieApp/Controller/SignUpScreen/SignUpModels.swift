@@ -8,20 +8,26 @@
 
 import UIKit
 
-enum SignUp
+enum SignUpModel
 {
-    // MARK: Use cases
-    
-//    enum Something
-//    {
-//        struct Request
-//        {
-//        }
-//        struct Response
-//        {
-//        }
-//        struct ViewModel
-//        {
-//        }
-//    }
+    enum ViewInit {
+        struct Request {
+        }
+        struct Response {
+        }
+        struct ViewModel {
+            let logoImage: UIImage
+            let signUpButtonTitle: String
+            let signInButtonTitle: String
+            let privacyButtonTitle: String
+            let carouselViewData: [CarouselData]
+            let homeCarouselpageNumber: Int
+        }
+    }
+
+    struct CarouselData {
+        let image: UIImage?
+        let middleText: String
+        let middleSubText: String
+    }
 }

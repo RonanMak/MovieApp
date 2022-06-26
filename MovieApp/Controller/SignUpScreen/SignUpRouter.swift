@@ -10,7 +10,8 @@ import UIKit
 
 protocol SignUpRoutingLogic
 {
-    //func routeToSomewhere(segue: UIStoryboardSegue?)
+    func routeToPrivacy()
+    func routeToSignIn()
 }
 
 protocol SignUpDataPassing
@@ -18,39 +19,31 @@ protocol SignUpDataPassing
     var dataStore: SignUpDataStore? { get }
 }
 
-class SignUpRouter: SignUpRoutingLogic, SignUpDataPassing
+class SignUpRouter: SignUpDataPassing
 {
     weak var viewController: SignUpViewController?
     var dataStore: SignUpDataStore?
-    
-    // MARK: Routing
-    
-    //func routeToSomewhere(segue: UIStoryboardSegue?)
-    //{
-    //  if let segue = segue {
-    //    let destinationVC = segue.destination as! SomewhereViewController
-    //    var destinationDS = destinationVC.router!.dataStore!
-    //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-    //  } else {
-    //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-    //    let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-    //    var destinationDS = destinationVC.router!.dataStore!
-    //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-    //    navigateToSomewhere(source: viewController!, destination: destinationVC)
-    //  }
-    //}
-    
-    // MARK: Navigation
-    
-    //func navigateToSomewhere(source: SignUpViewController, destination: SomewhereViewController)
-    //{
-    //  source.show(destination, sender: nil)
-    //}
-    
-    // MARK: Passing data
-    
-    //func passDataToSomewhere(source: SignUpDataStore, destination: inout SomewhereDataStore)
-    //{
-    //  destination.name = source.name
-    //}
+}
+
+// MARK: - SignUpRoutingLogic
+
+extension SignUpRouter: SignUpRoutingLogic {
+    func routeToPrivacy() {
+        let rootViewController = PrivacyViewController()
+        let navigationController = UINavigationController(rootViewController: rootViewController)
+//        navigationController.modalPresentationStyle = .fullScreen
+
+        viewController?.present(navigationController, animated: true)
+
+//        let vc = UIViewController()
+//        vc.view.backgroundColor = .red
+//        viewController?.navigationController?.pushViewController(vc, animated: true)
+    }
+
+    func routeToSignIn() {
+
+        let viewController = UINavigationController(rootViewController: SignInViewController())
+        viewController.navigationController?.pushViewController(viewController, animated: true)
+
+    }
 }

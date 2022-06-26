@@ -10,18 +10,34 @@ import UIKit
 
 protocol SignInPresentationLogic
 {
-//    func presentSomething(response: SignIn.Something.Response)
+    func presentViewInit()
 }
 
-class SignInPresenter: SignInPresentationLogic
+class SignInPresenter
 {
     weak var viewController: SignInDisplayLogic?
-    
-    // MARK: Do something
-    
-//    func presentSomething(response: SignIn.Something.Response)
-//    {
-//        let viewModel = SignIn.Something.ViewModel()
-//        viewController?.displaySomething(viewModel: viewModel)
-//    }
+
+}
+
+extension SignInPresenter: SignInPresentationLogic {
+    func presentViewInit() {
+
+        let emailInputPlaceholder = "Email or phone number"
+        let passwordInputPlaceholder = "Password"
+        let showPasswordButton = "SHOW"
+        let authButtonPlaceholder = "Sign In"
+        let recoverPasswordPlaceholder = "Recover Password"
+        let learnMoreText = "Sign in is protected by Google reCAPTCHA to ensure you're not a bot. Learn more."
+
+
+        let viewModel = SignIn.ViewInit.ViewModel(
+            emailInputPlaceholder: emailInputPlaceholder,
+            passwordInputPlaceholder: passwordInputPlaceholder,
+            showPasswordButton: showPasswordButton,
+            authButtonPlaceholder: authButtonPlaceholder,
+            recoverPasswordPlaceholder: recoverPasswordPlaceholder,
+            learnMoreText: learnMoreText
+        )
+        viewController?.displayViewInit(viewModel: viewModel)
+    }
 }

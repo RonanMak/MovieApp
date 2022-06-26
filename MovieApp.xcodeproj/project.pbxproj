@@ -40,6 +40,19 @@
 		7C062A1C2859005D006E4E62 /* SignUpConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C062A142859005D006E4E62 /* SignUpConfigurator.swift */; };
 		7C062A1D2859005D006E4E62 /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C062A152859005D006E4E62 /* SignUpViewController.xib */; };
 		7C062A2128590550006E4E62 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C062A2028590550006E4E62 /* Extension.swift */; };
+		7C5CFA8A28673A8C00A1CF61 /* PlaceholderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5CFA8928673A8C00A1CF61 /* PlaceholderTextField.swift */; };
+		7C5CFA8C2867815300A1CF61 /* AuthBotton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5CFA8B2867815300A1CF61 /* AuthBotton.swift */; };
+		7C5CFA8F28680B7B00A1CF61 /* JVFloatLabeledTextField in Frameworks */ = {isa = PBXBuildFile; productRef = 7C5CFA8E28680B7B00A1CF61 /* JVFloatLabeledTextField */; };
+		7CFE2817285E19D600A68D5C /* PrivacyPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFE280F285E19D600A68D5C /* PrivacyPresenter.swift */; };
+		7CFE2818285E19D600A68D5C /* PrivacyWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFE2810285E19D600A68D5C /* PrivacyWorker.swift */; };
+		7CFE2819285E19D600A68D5C /* PrivacyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFE2811285E19D600A68D5C /* PrivacyRouter.swift */; };
+		7CFE281A285E19D600A68D5C /* PrivacyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFE2812285E19D600A68D5C /* PrivacyModels.swift */; };
+		7CFE281B285E19D600A68D5C /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFE2813285E19D600A68D5C /* PrivacyViewController.swift */; };
+		7CFE281C285E19D600A68D5C /* PrivacyInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFE2814285E19D600A68D5C /* PrivacyInteractor.swift */; };
+		7CFE281D285E19D600A68D5C /* PrivacyConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFE2815285E19D600A68D5C /* PrivacyConfigurator.swift */; };
+		7CFE281E285E19D600A68D5C /* PrivacyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CFE2816285E19D600A68D5C /* PrivacyViewController.xib */; };
+		7CFE28222860AE9300A68D5C /* HomeCarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFE28212860AE9300A68D5C /* HomeCarouselCell.swift */; };
+		7CFE28242860B28700A68D5C /* HomeCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFE28232860B28700A68D5C /* HomeCarouselView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +110,18 @@
 		7C062A142859005D006E4E62 /* SignUpConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpConfigurator.swift; sourceTree = "<group>"; };
 		7C062A152859005D006E4E62 /* SignUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
 		7C062A2028590550006E4E62 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		7C5CFA8928673A8C00A1CF61 /* PlaceholderTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextField.swift; sourceTree = "<group>"; };
+		7C5CFA8B2867815300A1CF61 /* AuthBotton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthBotton.swift; sourceTree = "<group>"; };
+		7CFE280F285E19D600A68D5C /* PrivacyPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPresenter.swift; sourceTree = "<group>"; };
+		7CFE2810285E19D600A68D5C /* PrivacyWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyWorker.swift; sourceTree = "<group>"; };
+		7CFE2811285E19D600A68D5C /* PrivacyRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyRouter.swift; sourceTree = "<group>"; };
+		7CFE2812285E19D600A68D5C /* PrivacyModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyModels.swift; sourceTree = "<group>"; };
+		7CFE2813285E19D600A68D5C /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
+		7CFE2814285E19D600A68D5C /* PrivacyInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyInteractor.swift; sourceTree = "<group>"; };
+		7CFE2815285E19D600A68D5C /* PrivacyConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyConfigurator.swift; sourceTree = "<group>"; };
+		7CFE2816285E19D600A68D5C /* PrivacyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrivacyViewController.xib; sourceTree = "<group>"; };
+		7CFE28212860AE9300A68D5C /* HomeCarouselCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCarouselCell.swift; sourceTree = "<group>"; };
+		7CFE28232860B28700A68D5C /* HomeCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCarouselView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C5CFA8F28680B7B00A1CF61 /* JVFloatLabeledTextField in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,9 +207,10 @@
 		7C0629B42858CD72006E4E62 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				7C0629B92858CEBE006E4E62 /* HomeScreen */,
 				7C0629DD2858FF69006E4E62 /* SignUpScreen */,
 				7C0629BA2858CEF5006E4E62 /* SignInScreen */,
-				7C0629B92858CEBE006E4E62 /* HomeScreen */,
+				7CFE280E285E19AF00A68D5C /* PrivacyScreen */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -244,6 +271,7 @@
 				7C062A032859003E006E4E62 /* SignInInteractor.swift */,
 				7C062A042859003E006E4E62 /* SignInConfigurator.swift */,
 				7C062A052859003E006E4E62 /* SignInViewController.xib */,
+				7C5CFA8828673A5800A1CF61 /* View */,
 			);
 			path = SignInScreen;
 			sourceTree = "<group>";
@@ -252,9 +280,9 @@
 			isa = PBXGroup;
 			children = (
 				7C062A112859005D006E4E62 /* SignUpModels.swift */,
+				7C062A122859005D006E4E62 /* SignUpViewController.swift */,
 				7C062A132859005D006E4E62 /* SignUpInteractor.swift */,
 				7C062A0E2859005D006E4E62 /* SignUpPresenter.swift */,
-				7C062A122859005D006E4E62 /* SignUpViewController.swift */,
 				7C062A102859005D006E4E62 /* SignUpRouter.swift */,
 				7C062A0F2859005D006E4E62 /* SignUpWorker.swift */,
 				7C062A142859005D006E4E62 /* SignUpConfigurator.swift */,
@@ -267,8 +295,34 @@
 		7C062A1E28590442006E4E62 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7CFE28212860AE9300A68D5C /* HomeCarouselCell.swift */,
+				7CFE28232860B28700A68D5C /* HomeCarouselView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		7C5CFA8828673A5800A1CF61 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7C5CFA8928673A8C00A1CF61 /* PlaceholderTextField.swift */,
+				7C5CFA8B2867815300A1CF61 /* AuthBotton.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7CFE280E285E19AF00A68D5C /* PrivacyScreen */ = {
+			isa = PBXGroup;
+			children = (
+				7CFE2812285E19D600A68D5C /* PrivacyModels.swift */,
+				7CFE2814285E19D600A68D5C /* PrivacyInteractor.swift */,
+				7CFE280F285E19D600A68D5C /* PrivacyPresenter.swift */,
+				7CFE2813285E19D600A68D5C /* PrivacyViewController.swift */,
+				7CFE2810285E19D600A68D5C /* PrivacyWorker.swift */,
+				7CFE2811285E19D600A68D5C /* PrivacyRouter.swift */,
+				7CFE2815285E19D600A68D5C /* PrivacyConfigurator.swift */,
+				7CFE2816285E19D600A68D5C /* PrivacyViewController.xib */,
+			);
+			path = PrivacyScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,6 +341,9 @@
 			dependencies = (
 			);
 			name = MovieApp;
+			packageProductDependencies = (
+				7C5CFA8E28680B7B00A1CF61 /* JVFloatLabeledTextField */,
+			);
 			productName = MovieApp;
 			productReference = 7C0629812858C8BE006E4E62 /* MovieApp.app */;
 			productType = "com.apple.product-type.application";
@@ -359,6 +416,9 @@
 				Base,
 			);
 			mainGroup = 7C0629782858C8BE006E4E62;
+			packageReferences = (
+				7C5CFA8D28680B7A00A1CF61 /* XCRemoteSwiftPackageReference "JVFloatLabeledTextField" */,
+			);
 			productRefGroup = 7C0629822858C8BE006E4E62 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -378,6 +438,7 @@
 				7C062A0D2859003E006E4E62 /* SignInViewController.xib in Resources */,
 				7C0629912858C8C0006E4E62 /* LaunchScreen.storyboard in Resources */,
 				7C06298E2858C8C0006E4E62 /* Assets.xcassets in Resources */,
+				7CFE281E285E19D600A68D5C /* PrivacyViewController.xib in Resources */,
 				7C06298C2858C8BE006E4E62 /* Main.storyboard in Resources */,
 				7C062A1D2859005D006E4E62 /* SignUpViewController.xib in Resources */,
 				7C0629FD2859001D006E4E62 /* HomeViewController.xib in Resources */,
@@ -409,23 +470,34 @@
 				7C062A162859005D006E4E62 /* SignUpPresenter.swift in Sources */,
 				7C0629F62859001D006E4E62 /* HomePresenter.swift in Sources */,
 				7C062A192859005D006E4E62 /* SignUpModels.swift in Sources */,
+				7CFE281A285E19D600A68D5C /* PrivacyModels.swift in Sources */,
 				7C0629852858C8BE006E4E62 /* AppDelegate.swift in Sources */,
+				7CFE281B285E19D600A68D5C /* PrivacyViewController.swift in Sources */,
 				7C0629F72859001D006E4E62 /* HomeWorker.swift in Sources */,
 				7C0629FB2859001D006E4E62 /* HomeInteractor.swift in Sources */,
 				7C062A062859003E006E4E62 /* SignInPresenter.swift in Sources */,
+				7C5CFA8C2867815300A1CF61 /* AuthBotton.swift in Sources */,
 				7C062A1B2859005D006E4E62 /* SignUpInteractor.swift in Sources */,
 				7C0629872858C8BE006E4E62 /* SceneDelegate.swift in Sources */,
 				7C062A082859003E006E4E62 /* SignInRouter.swift in Sources */,
+				7C5CFA8A28673A8C00A1CF61 /* PlaceholderTextField.swift in Sources */,
 				7C0629F92859001D006E4E62 /* HomeModels.swift in Sources */,
 				7C062A1C2859005D006E4E62 /* SignUpConfigurator.swift in Sources */,
+				7CFE28222860AE9300A68D5C /* HomeCarouselCell.swift in Sources */,
 				7C062A072859003E006E4E62 /* SignInWorker.swift in Sources */,
 				7C0629FC2859001D006E4E62 /* HomeConfigurator.swift in Sources */,
+				7CFE28242860B28700A68D5C /* HomeCarouselView.swift in Sources */,
 				7C062A2128590550006E4E62 /* Extension.swift in Sources */,
 				7C062A0B2859003E006E4E62 /* SignInInteractor.swift in Sources */,
+				7CFE281C285E19D600A68D5C /* PrivacyInteractor.swift in Sources */,
 				7C062A172859005D006E4E62 /* SignUpWorker.swift in Sources */,
+				7CFE2818285E19D600A68D5C /* PrivacyWorker.swift in Sources */,
+				7CFE2817285E19D600A68D5C /* PrivacyPresenter.swift in Sources */,
+				7CFE281D285E19D600A68D5C /* PrivacyConfigurator.swift in Sources */,
 				7C062A1A2859005D006E4E62 /* SignUpViewController.swift in Sources */,
 				7C0629FA2859001D006E4E62 /* HomeViewController.swift in Sources */,
 				7C0629F82859001D006E4E62 /* HomeRouter.swift in Sources */,
+				7CFE2819285E19D600A68D5C /* PrivacyRouter.swift in Sources */,
 				7C062A0C2859003E006E4E62 /* SignInConfigurator.swift in Sources */,
 				7C062A092859003E006E4E62 /* SignInModels.swift in Sources */,
 				7C062A182859005D006E4E62 /* SignUpRouter.swift in Sources */,
@@ -764,6 +836,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7C5CFA8D28680B7A00A1CF61 /* XCRemoteSwiftPackageReference "JVFloatLabeledTextField" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jverdi/JVFloatLabeledTextField.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7C5CFA8E28680B7B00A1CF61 /* JVFloatLabeledTextField */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7C5CFA8D28680B7A00A1CF61 /* XCRemoteSwiftPackageReference "JVFloatLabeledTextField" */;
+			productName = JVFloatLabeledTextField;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7C0629792858C8BE006E4E62 /* Project object */;
 }
