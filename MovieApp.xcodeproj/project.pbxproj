@@ -43,6 +43,26 @@
 		7C5CFA8A28673A8C00A1CF61 /* PlaceholderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5CFA8928673A8C00A1CF61 /* PlaceholderTextField.swift */; };
 		7C5CFA8C2867815300A1CF61 /* AuthBotton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5CFA8B2867815300A1CF61 /* AuthBotton.swift */; };
 		7C5CFA8F28680B7B00A1CF61 /* JVFloatLabeledTextField in Frameworks */ = {isa = PBXBuildFile; productRef = 7C5CFA8E28680B7B00A1CF61 /* JVFloatLabeledTextField */; };
+		7C5CFA92286F27A100A1CF61 /* MainTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5CFA91286F27A000A1CF61 /* MainTabbarController.swift */; };
+		7C5CFA95286F292700A1CF61 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5CFA94286F292700A1CF61 /* Constants.swift */; };
+		7C5CFAAA286F434A00A1CF61 /* SearchScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5CFAA2286F434A00A1CF61 /* SearchScreenPresenter.swift */; };
+		7C5CFAAB286F434A00A1CF61 /* SearchScreenWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5CFAA3286F434A00A1CF61 /* SearchScreenWorker.swift */; };
+		7C5CFAAC286F434A00A1CF61 /* SearchScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5CFAA4286F434A00A1CF61 /* SearchScreenRouter.swift */; };
+		7C5CFAAD286F434A00A1CF61 /* SearchScreenModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5CFAA5286F434A00A1CF61 /* SearchScreenModels.swift */; };
+		7C5CFAAE286F434A00A1CF61 /* SearchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5CFAA6286F434A00A1CF61 /* SearchScreenViewController.swift */; };
+		7C5CFAAF286F434A00A1CF61 /* SearchScreenInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5CFAA7286F434A00A1CF61 /* SearchScreenInteractor.swift */; };
+		7C5CFAB0286F434A00A1CF61 /* SearchScreenConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5CFAA8286F434A00A1CF61 /* SearchScreenConfigurator.swift */; };
+		7C5CFAB1286F434A00A1CF61 /* SearchScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C5CFAA9286F434A00A1CF61 /* SearchScreenViewController.xib */; };
+		7C5CFABB286F438000A1CF61 /* NewScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5CFAB3286F438000A1CF61 /* NewScreenPresenter.swift */; };
+		7C5CFABC286F438000A1CF61 /* NewScreenWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5CFAB4286F438000A1CF61 /* NewScreenWorker.swift */; };
+		7C5CFABD286F438000A1CF61 /* NewScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5CFAB5286F438000A1CF61 /* NewScreenRouter.swift */; };
+		7C5CFABE286F438000A1CF61 /* NewScreenModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5CFAB6286F438000A1CF61 /* NewScreenModels.swift */; };
+		7C5CFABF286F438000A1CF61 /* NewScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5CFAB7286F438000A1CF61 /* NewScreenViewController.swift */; };
+		7C5CFAC0286F438000A1CF61 /* NewScreenInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5CFAB8286F438000A1CF61 /* NewScreenInteractor.swift */; };
+		7C5CFAC1286F438000A1CF61 /* NewScreenConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5CFAB9286F438000A1CF61 /* NewScreenConfigurator.swift */; };
+		7C5CFAC2286F438000A1CF61 /* NewScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C5CFABA286F438000A1CF61 /* NewScreenViewController.xib */; };
+		7C5CFAC3286F5B4400A1CF61 /* Localizable (English).strings in Resources */ = {isa = PBXBuildFile; fileRef = 7C5CFAC5286F5B4400A1CF61 /* Localizable (English).strings */; };
+		7C5CFAC6286F5B4A00A1CF61 /* Localizable (Chinese, Traditional).strings in Resources */ = {isa = PBXBuildFile; fileRef = 7C5CFAC8286F5B4A00A1CF61 /* Localizable (Chinese, Traditional).strings */; };
 		7CFE2817285E19D600A68D5C /* PrivacyPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFE280F285E19D600A68D5C /* PrivacyPresenter.swift */; };
 		7CFE2818285E19D600A68D5C /* PrivacyWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFE2810285E19D600A68D5C /* PrivacyWorker.swift */; };
 		7CFE2819285E19D600A68D5C /* PrivacyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFE2811285E19D600A68D5C /* PrivacyRouter.swift */; };
@@ -112,6 +132,26 @@
 		7C062A2028590550006E4E62 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		7C5CFA8928673A8C00A1CF61 /* PlaceholderTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextField.swift; sourceTree = "<group>"; };
 		7C5CFA8B2867815300A1CF61 /* AuthBotton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthBotton.swift; sourceTree = "<group>"; };
+		7C5CFA91286F27A000A1CF61 /* MainTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbarController.swift; sourceTree = "<group>"; };
+		7C5CFA94286F292700A1CF61 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		7C5CFAA2286F434A00A1CF61 /* SearchScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenPresenter.swift; sourceTree = "<group>"; };
+		7C5CFAA3286F434A00A1CF61 /* SearchScreenWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenWorker.swift; sourceTree = "<group>"; };
+		7C5CFAA4286F434A00A1CF61 /* SearchScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenRouter.swift; sourceTree = "<group>"; };
+		7C5CFAA5286F434A00A1CF61 /* SearchScreenModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenModels.swift; sourceTree = "<group>"; };
+		7C5CFAA6286F434A00A1CF61 /* SearchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenViewController.swift; sourceTree = "<group>"; };
+		7C5CFAA7286F434A00A1CF61 /* SearchScreenInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenInteractor.swift; sourceTree = "<group>"; };
+		7C5CFAA8286F434A00A1CF61 /* SearchScreenConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenConfigurator.swift; sourceTree = "<group>"; };
+		7C5CFAA9286F434A00A1CF61 /* SearchScreenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchScreenViewController.xib; sourceTree = "<group>"; };
+		7C5CFAB3286F438000A1CF61 /* NewScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewScreenPresenter.swift; sourceTree = "<group>"; };
+		7C5CFAB4286F438000A1CF61 /* NewScreenWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewScreenWorker.swift; sourceTree = "<group>"; };
+		7C5CFAB5286F438000A1CF61 /* NewScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewScreenRouter.swift; sourceTree = "<group>"; };
+		7C5CFAB6286F438000A1CF61 /* NewScreenModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewScreenModels.swift; sourceTree = "<group>"; };
+		7C5CFAB7286F438000A1CF61 /* NewScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewScreenViewController.swift; sourceTree = "<group>"; };
+		7C5CFAB8286F438000A1CF61 /* NewScreenInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewScreenInteractor.swift; sourceTree = "<group>"; };
+		7C5CFAB9286F438000A1CF61 /* NewScreenConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewScreenConfigurator.swift; sourceTree = "<group>"; };
+		7C5CFABA286F438000A1CF61 /* NewScreenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewScreenViewController.xib; sourceTree = "<group>"; };
+		7C5CFAC4286F5B4400A1CF61 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "en.lproj/Localizable (English).strings"; sourceTree = "<group>"; };
+		7C5CFAC7286F5B4A00A1CF61 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "en.lproj/Localizable (Chinese, Traditional).strings"; sourceTree = "<group>"; };
 		7CFE280F285E19D600A68D5C /* PrivacyPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPresenter.swift; sourceTree = "<group>"; };
 		7CFE2810285E19D600A68D5C /* PrivacyWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyWorker.swift; sourceTree = "<group>"; };
 		7CFE2811285E19D600A68D5C /* PrivacyRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyRouter.swift; sourceTree = "<group>"; };
@@ -173,6 +213,7 @@
 		7C0629832858C8BE006E4E62 /* MovieApp */ = {
 			isa = PBXGroup;
 			children = (
+				7C5CFA93286F291800A1CF61 /* Constants */,
 				7C0629B82858CE90006E4E62 /* Service */,
 				7C0629B72858CE80006E4E62 /* Helper */,
 				7C0629B52858CD81006E4E62 /* Extension */,
@@ -207,6 +248,9 @@
 		7C0629B42858CD72006E4E62 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				7C5CFAB2286F436B00A1CF61 /* NewScreen */,
+				7C5CFAA1286F433000A1CF61 /* SearchScreen */,
+				7C5CFA90286F24FD00A1CF61 /* MainTabbar */,
 				7C0629B92858CEBE006E4E62 /* HomeScreen */,
 				7C0629DD2858FF69006E4E62 /* SignUpScreen */,
 				7C0629BA2858CEF5006E4E62 /* SignInScreen */,
@@ -227,6 +271,8 @@
 			isa = PBXGroup;
 			children = (
 				7C06298D2858C8C0006E4E62 /* Assets.xcassets */,
+				7C5CFAC5286F5B4400A1CF61 /* Localizable (English).strings */,
+				7C5CFAC8286F5B4A00A1CF61 /* Localizable (Chinese, Traditional).strings */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -308,6 +354,52 @@
 				7C5CFA8B2867815300A1CF61 /* AuthBotton.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		7C5CFA90286F24FD00A1CF61 /* MainTabbar */ = {
+			isa = PBXGroup;
+			children = (
+				7C5CFA91286F27A000A1CF61 /* MainTabbarController.swift */,
+			);
+			path = MainTabbar;
+			sourceTree = "<group>";
+		};
+		7C5CFA93286F291800A1CF61 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				7C5CFA94286F292700A1CF61 /* Constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		7C5CFAA1286F433000A1CF61 /* SearchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				7C5CFAA2286F434A00A1CF61 /* SearchScreenPresenter.swift */,
+				7C5CFAA3286F434A00A1CF61 /* SearchScreenWorker.swift */,
+				7C5CFAA4286F434A00A1CF61 /* SearchScreenRouter.swift */,
+				7C5CFAA5286F434A00A1CF61 /* SearchScreenModels.swift */,
+				7C5CFAA6286F434A00A1CF61 /* SearchScreenViewController.swift */,
+				7C5CFAA7286F434A00A1CF61 /* SearchScreenInteractor.swift */,
+				7C5CFAA8286F434A00A1CF61 /* SearchScreenConfigurator.swift */,
+				7C5CFAA9286F434A00A1CF61 /* SearchScreenViewController.xib */,
+			);
+			path = SearchScreen;
+			sourceTree = "<group>";
+		};
+		7C5CFAB2286F436B00A1CF61 /* NewScreen */ = {
+			isa = PBXGroup;
+			children = (
+				7C5CFAB3286F438000A1CF61 /* NewScreenPresenter.swift */,
+				7C5CFAB4286F438000A1CF61 /* NewScreenWorker.swift */,
+				7C5CFAB5286F438000A1CF61 /* NewScreenRouter.swift */,
+				7C5CFAB6286F438000A1CF61 /* NewScreenModels.swift */,
+				7C5CFAB7286F438000A1CF61 /* NewScreenViewController.swift */,
+				7C5CFAB8286F438000A1CF61 /* NewScreenInteractor.swift */,
+				7C5CFAB9286F438000A1CF61 /* NewScreenConfigurator.swift */,
+				7C5CFABA286F438000A1CF61 /* NewScreenViewController.xib */,
+			);
+			path = NewScreen;
 			sourceTree = "<group>";
 		};
 		7CFE280E285E19AF00A68D5C /* PrivacyScreen */ = {
@@ -435,12 +527,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C5CFAC6286F5B4A00A1CF61 /* Localizable (Chinese, Traditional).strings in Resources */,
 				7C062A0D2859003E006E4E62 /* SignInViewController.xib in Resources */,
 				7C0629912858C8C0006E4E62 /* LaunchScreen.storyboard in Resources */,
 				7C06298E2858C8C0006E4E62 /* Assets.xcassets in Resources */,
 				7CFE281E285E19D600A68D5C /* PrivacyViewController.xib in Resources */,
 				7C06298C2858C8BE006E4E62 /* Main.storyboard in Resources */,
+				7C5CFAC2286F438000A1CF61 /* NewScreenViewController.xib in Resources */,
+				7C5CFAC3286F5B4400A1CF61 /* Localizable (English).strings in Resources */,
 				7C062A1D2859005D006E4E62 /* SignUpViewController.xib in Resources */,
+				7C5CFAB1286F434A00A1CF61 /* SearchScreenViewController.xib in Resources */,
 				7C0629FD2859001D006E4E62 /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -469,17 +565,25 @@
 				7C062A0A2859003E006E4E62 /* SignInViewController.swift in Sources */,
 				7C062A162859005D006E4E62 /* SignUpPresenter.swift in Sources */,
 				7C0629F62859001D006E4E62 /* HomePresenter.swift in Sources */,
+				7C5CFABD286F438000A1CF61 /* NewScreenRouter.swift in Sources */,
+				7C5CFABB286F438000A1CF61 /* NewScreenPresenter.swift in Sources */,
 				7C062A192859005D006E4E62 /* SignUpModels.swift in Sources */,
+				7C5CFABF286F438000A1CF61 /* NewScreenViewController.swift in Sources */,
 				7CFE281A285E19D600A68D5C /* PrivacyModels.swift in Sources */,
 				7C0629852858C8BE006E4E62 /* AppDelegate.swift in Sources */,
+				7C5CFAB0286F434A00A1CF61 /* SearchScreenConfigurator.swift in Sources */,
 				7CFE281B285E19D600A68D5C /* PrivacyViewController.swift in Sources */,
 				7C0629F72859001D006E4E62 /* HomeWorker.swift in Sources */,
 				7C0629FB2859001D006E4E62 /* HomeInteractor.swift in Sources */,
+				7C5CFAC0286F438000A1CF61 /* NewScreenInteractor.swift in Sources */,
+				7C5CFAAF286F434A00A1CF61 /* SearchScreenInteractor.swift in Sources */,
 				7C062A062859003E006E4E62 /* SignInPresenter.swift in Sources */,
+				7C5CFAAE286F434A00A1CF61 /* SearchScreenViewController.swift in Sources */,
 				7C5CFA8C2867815300A1CF61 /* AuthBotton.swift in Sources */,
 				7C062A1B2859005D006E4E62 /* SignUpInteractor.swift in Sources */,
 				7C0629872858C8BE006E4E62 /* SceneDelegate.swift in Sources */,
 				7C062A082859003E006E4E62 /* SignInRouter.swift in Sources */,
+				7C5CFA92286F27A100A1CF61 /* MainTabbarController.swift in Sources */,
 				7C5CFA8A28673A8C00A1CF61 /* PlaceholderTextField.swift in Sources */,
 				7C0629F92859001D006E4E62 /* HomeModels.swift in Sources */,
 				7C062A1C2859005D006E4E62 /* SignUpConfigurator.swift in Sources */,
@@ -487,19 +591,27 @@
 				7C062A072859003E006E4E62 /* SignInWorker.swift in Sources */,
 				7C0629FC2859001D006E4E62 /* HomeConfigurator.swift in Sources */,
 				7CFE28242860B28700A68D5C /* HomeCarouselView.swift in Sources */,
+				7C5CFAAB286F434A00A1CF61 /* SearchScreenWorker.swift in Sources */,
 				7C062A2128590550006E4E62 /* Extension.swift in Sources */,
 				7C062A0B2859003E006E4E62 /* SignInInteractor.swift in Sources */,
+				7C5CFABE286F438000A1CF61 /* NewScreenModels.swift in Sources */,
 				7CFE281C285E19D600A68D5C /* PrivacyInteractor.swift in Sources */,
+				7C5CFAAC286F434A00A1CF61 /* SearchScreenRouter.swift in Sources */,
 				7C062A172859005D006E4E62 /* SignUpWorker.swift in Sources */,
 				7CFE2818285E19D600A68D5C /* PrivacyWorker.swift in Sources */,
+				7C5CFAC1286F438000A1CF61 /* NewScreenConfigurator.swift in Sources */,
 				7CFE2817285E19D600A68D5C /* PrivacyPresenter.swift in Sources */,
+				7C5CFABC286F438000A1CF61 /* NewScreenWorker.swift in Sources */,
 				7CFE281D285E19D600A68D5C /* PrivacyConfigurator.swift in Sources */,
 				7C062A1A2859005D006E4E62 /* SignUpViewController.swift in Sources */,
 				7C0629FA2859001D006E4E62 /* HomeViewController.swift in Sources */,
 				7C0629F82859001D006E4E62 /* HomeRouter.swift in Sources */,
+				7C5CFAAD286F434A00A1CF61 /* SearchScreenModels.swift in Sources */,
+				7C5CFAAA286F434A00A1CF61 /* SearchScreenPresenter.swift in Sources */,
 				7CFE2819285E19D600A68D5C /* PrivacyRouter.swift in Sources */,
 				7C062A0C2859003E006E4E62 /* SignInConfigurator.swift in Sources */,
 				7C062A092859003E006E4E62 /* SignInModels.swift in Sources */,
+				7C5CFA95286F292700A1CF61 /* Constants.swift in Sources */,
 				7C062A182859005D006E4E62 /* SignUpRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -551,6 +663,22 @@
 				7C0629902858C8C0006E4E62 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		7C5CFAC5286F5B4400A1CF61 /* Localizable (English).strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7C5CFAC4286F5B4400A1CF61 /* en */,
+			);
+			name = "Localizable (English).strings";
+			sourceTree = "<group>";
+		};
+		7C5CFAC8286F5B4A00A1CF61 /* Localizable (Chinese, Traditional).strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7C5CFAC7286F5B4A00A1CF61 /* en */,
+			);
+			name = "Localizable (Chinese, Traditional).strings";
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -677,6 +805,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J7WKHSZ8C5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MovieApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -704,6 +833,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J7WKHSZ8C5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MovieApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

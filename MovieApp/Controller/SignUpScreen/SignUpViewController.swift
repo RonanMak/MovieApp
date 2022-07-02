@@ -15,58 +15,15 @@ protocol SignUpDisplayLogic: AnyObject
 
 class SignUpViewController: UIViewController
 {
-    
     // MARK: - Properties
-    
-    enum Dimen {
-        // basic style
-        static let defaultMargin: CGFloat = 20
-        static let marginLeft: CGFloat = 20
-        static let marginRight: CGFloat = 20
-        static let marginBottom: CGFloat = 20
-        static let marginTop: CGFloat = 20
-        
-        // middleText
-        static let fontSize: CGFloat = 35
-        
-        // middleSubText
-        static let subTextFontSize: CGFloat = 20
-        
-        // logo
-        static let logoWidth: CGFloat = 90
-        static let logohHeight: CGFloat = 25
-        
-        // homeCarouselView page number
-        static let pageNumner: Int = 3
-    }
+    private lazy var logo = UIButton()
+    private lazy var homeCarouselView = HomeCarouselView()
 
-    // MARK: - Properties
-    
-    private let logoImage: UIImageView = {
-        let imageView = UIImageView()
-        return imageView
-    }()
-    
     private lazy var signUpButton: UIButton = {
         let button = UIButton().signUpButton(withText: nil)
         button.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
         return button
     }()
-    
-    private lazy var signInButton: UIButton = {
-        let button = UIButton()
-        button.addTarget(self, action: #selector(handleSignIn), for: .touchUpInside)
-        
-        return button
-    }()
-    
-    private lazy var privacyButton: UIButton = {
-        let button = UIButton()
-        button.addTarget(self, action: #selector(handlePrivacy), for: .touchUpInside)
-        return button
-    }()
-    
-    private var homeCarouselView: HomeCarouselView?
     
     var interactor: SignUpBusinessLogic?
     var router: (SignUpRoutingLogic & SignUpDataPassing)?
@@ -76,35 +33,21 @@ class SignUpViewController: UIViewController
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
     {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        setup()
     }
     
     required init?(coder aDecoder: NSCoder)
     {
         super.init(coder: aDecoder)
-        setup()
     }
     
     // MARK: - View lifecycle
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        interactor?.requestViewInit()
-        setupHomeCarouselViewUI()
         setupViews()
-    }
-    
-    private func setup() {
-        let viewController = self
-        let interactor = SignUpInteractor()
-        let presenter = SignUpPresenter()
-        let router = SignUpRouter()
-        viewController.interactor = interactor
-        viewController.router = router
-        interactor.presenter = presenter
-        presenter.viewController = viewController
-        router.viewController = viewController
-        router.dataStore = interactor
+        setUpNavigationBar()
+        interactor?.requestViewInit()
     }
     
     // MARK: - Set up views
@@ -115,47 +58,7 @@ class SignUpViewController: UIViewController
     
     private func setupViews() {
         view.backgroundColor = .black
-        
-        view.addSubview(signUpButton)
-        view.addSubview(logoImage)
-        view.addSubview(signInButton)
-        view.addSubview(privacyButton)
-        
-        signUpButton.anchor(
-            bottom: view.safeAreaLayoutGuide.bottomAnchor,
-            left: view.leftAnchor,
-            right: view.rightAnchor,
-            paddingBottom: Dimen.marginBottom,
-            paddingLeft: Dimen.marginLeft,
-            paddingRight: Dimen.marginRight
-        )
-        
-        logoImage.anchor(
-            top: view.safeAreaLayoutGuide.topAnchor,
-            left: view.leftAnchor,
-            paddingLeft: Dimen.marginLeft,
-            width: Dimen.logoWidth, height: Dimen.logohHeight
-        )
-        
-        signInButton.anchor(
-            top: view.safeAreaLayoutGuide.topAnchor,
-            right: view.rightAnchor,
-            paddingRight: Dimen.marginRight
-        )
-        signInButton.centerYAnchor.constraint(
-            equalTo: logoImage.centerYAnchor).isActive = true
-        
-        privacyButton.anchor(
-            top: view.safeAreaLayoutGuide.topAnchor,
-            right: signInButton.leftAnchor,
-            paddingRight: Dimen.marginRight
-        )
-        privacyButton.centerYAnchor.constraint(
-            equalTo: logoImage.centerYAnchor).isActive = true
-    }
-    
-    func setupHomeCarouselViewUI() {
-        guard let homeCarouselView = homeCarouselView else { return }
+        setupHomeCarouselViewUI()
         view.addSubview(homeCarouselView)
         homeCarouselView.anchor(
             top: view.topAnchor,
@@ -163,6 +66,33 @@ class SignUpViewController: UIViewController
             left: view.leftAnchor,
             right: view.rightAnchor
         )
+        view.addSubview(signUpButton)
+
+        signUpButton.anchor(
+            bottom: view.safeAreaLayoutGuide.bottomAnchor,
+            left: view.leftAnchor,
+            right: view.rightAnchor,
+            paddingBottom: 20,
+            paddingLeft: 20,
+            paddingRight: 20
+        )
+    }
+
+    private func setUpNavigationBar() {
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        //  item color
+        navigationController?.navigationBar.tintColor = .white
+
+        let navigationBarAppearance = UINavigationBarAppearance()
+        // background color
+        navigationBarAppearance.configureWithDefaultBackground()
+        navigationBarAppearance.backgroundColor = .black
+        // title color
+        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.systemRed]
+    }
+    
+    func setupHomeCarouselViewUI() {
+
     }
     
     // MARK: - Status Bar
@@ -172,7 +102,7 @@ class SignUpViewController: UIViewController
     
     // MARK: - Handle button actions
     @objc func handleSignUp() {
-        
+        self.dismiss(animated: true)
     }
     
     @objc func handleSignIn() {
@@ -188,11 +118,17 @@ class SignUpViewController: UIViewController
 
 extension SignUpViewController: SignUpDisplayLogic {
     func displayViewInit(viewModel: SignUpModel.ViewInit.ViewModel) {
-        logoImage.image = viewModel.logoImage
+
+        homeCarouselView.configureView(with: viewModel.carouselViewData)
+
         signUpButton.setTitle(viewModel.signUpButtonTitle, for: .normal)
-        signInButton.setTitle(viewModel.signInButtonTitle, for: .normal)
-        privacyButton.setTitle(viewModel.privacyButtonTitle, for: .normal)
-        homeCarouselView = HomeCarouselView(pages: viewModel.homeCarouselpageNumber)
-        homeCarouselView?.configureView(with: viewModel.carouselViewData)
+
+        let signInButtonItem = UIBarButtonItem(title: viewModel.signInButtonTitle, style: .plain, target: self, action: #selector(handleSignIn))
+        let privacyButtonItem = UIBarButtonItem(title: viewModel.privacyButtonTitle, style: .plain, target: self, action: #selector(handlePrivacy))
+        logo.setImage(viewModel.logoImage, for: .normal)
+        let logoButtonItem = UIBarButtonItem(customView: logo)
+
+        navigationItem.rightBarButtonItems = [signInButtonItem, privacyButtonItem]
+        navigationItem.leftBarButtonItems = [logoButtonItem]
     }
 }

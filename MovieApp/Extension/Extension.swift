@@ -7,10 +7,6 @@
 
 import UIKit
 
-public struct AnchoredConstraints {
-    public var top, leading, bottom, trailing, width, height: NSLayoutConstraint?
-}
-
 // MARK: - UIButton
 
 extension UIButton {
@@ -75,27 +71,37 @@ extension UIView {
         }
     }
 
-    func centerXAndYAnchor(view: UIView) {
+    func centerX(inView view: UIView) {
         translatesAutoresizingMaskIntoConstraints = false
         centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
 
-    func centerXAnchor(view: UIView, constant: CGFloat = 0) {
-        translatesAutoresizingMaskIntoConstraints = false
-        centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: constant).isActive = true
-    }
+    func centerY(inView view: UIView, leftAnchor: NSLayoutXAxisAnchor? = nil,
+                 paddingLeft: CGFloat = 0, constant: CGFloat = 0) {
 
-    func centerYAnchor(view: UIView, constant: CGFloat = 0) {
         translatesAutoresizingMaskIntoConstraints = false
         centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: constant).isActive = true
+
+        if let left = leftAnchor {
+            anchor(left: left, paddingLeft: paddingLeft)
+        }
     }
 
-    func fillSuperview() {
+    func setDimensions(height: CGFloat, width: CGFloat) {
         translatesAutoresizingMaskIntoConstraints = false
-        anchor(top: superview?.topAnchor, bottom: superview?.bottomAnchor, left: superview?.leftAnchor, right: superview?.rightAnchor, paddingTop: 0, paddingBottom: 0, paddingLeft: 0, paddingRight: 0)
+        heightAnchor.constraint(equalToConstant: height).isActive = true
+        widthAnchor.constraint(equalToConstant: width).isActive = true
+    }
+
+    func addShadow() {
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.45
+        layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
+        layer.masksToBounds = false
     }
 }
+
+// MARK: - UIColor
 
 extension UIColor {
     static func rgb(red: CGFloat, green: CGFloat, blue: CGFloat) -> UIColor {
@@ -108,13 +114,16 @@ extension UIColor {
         static let inputTextFieldPlaceholderColor = UIColor.rgb(red: 188, green: 188, blue: 188)
         static let inputTextFieldBeginEditing = UIColor.rgb(red: 40, green: 40, blue: 40)
         static let authPageBackgroundColor = UIColor.rgb(red: 19, green: 19, blue: 19)
-
     }
 }
+
+// MARK: - CGColor
 
 extension CGColor {
     static func rgb(red: CGFloat, green: CGFloat, blue: CGFloat) -> CGColor {
         return CGColor.init(red: red/255, green: green/255, blue: blue/255, alpha: 1.0)
     }
-
 }
+
+
+

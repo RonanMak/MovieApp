@@ -1,21 +1,21 @@
 //
-//  SignInConfigurator.swift
+//  NewScreenConfigurator.swift
 //  MovieApp
 //
-//  Created by Ronan Mak on 15/6/2022.
+//  Created by Ronan Mak on 1/7/2022.
 //  Copyright © 2022 ___ORGANIZATIONNAME___. All rights reserved.
 //
 
 import UIKit
 
-class SignInConfigurator
+class NewScreenConfigurator
 {
-    class func createScene() -> SignInViewController
+    class func createScene() -> NewScreenViewController
     {
-        let viewController = SignInViewController(nibName: nil, bundle: nil)
-        let interactor = SignInInteractor()
-        let presenter = SignInPresenter()
-        let router = SignInRouter()
+        let viewController = NewScreenViewController(nibName: nil, bundle: nil)
+        let interactor = NewScreenInteractor()
+        let presenter = NewScreenPresenter()
+        let router = NewScreenRouter()
         viewController.interactor = interactor
         viewController.router = router
         interactor.presenter = presenter

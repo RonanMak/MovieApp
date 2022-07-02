@@ -1,0 +1,14 @@
+/* 
+  Localizable (Chinese, Traditional).strings
+  MovieApp
+
+  Created by Ronan Mak on 1/7/2022.
+  
+*/
+
+//MARK: Tabbar titles
+
+"tabbar_item_home" = "主頁";
+"tabbar_item_new" = "最新";
+"tabbar_item_search" = "搜尋";
+

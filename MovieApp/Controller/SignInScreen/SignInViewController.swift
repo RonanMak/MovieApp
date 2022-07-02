@@ -17,25 +17,13 @@ protocol SignInDisplayLogic: AnyObject
 class SignInViewController: UIViewController
 {
 
-    enum Dimen {
-        static let paddingTop: CGFloat = 20
-        static let paddingBottom: CGFloat = 20
-        static let paddingLeft: CGFloat = 20
-        static let paddingRight: CGFloat = 20
-
-        static let resetButtonHeight: CGFloat = 48
-
-        static let smallFontSize: CGFloat = 14
-        static let mediumFontSize: CGFloat = 16
-        static let largeFontSize: CGFloat = 18
-
-        static let commonAttribute = [
-            NSAttributedString.Key.font : UIFont.systemFont(ofSize: smallFontSize, weight: .bold),
-            NSMutableAttributedString.Key.foregroundColor: UIColor.lightGray
-        ]
-    }
-
     // MARK: - Properties
+    private lazy var logo: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "netflix-logo"), for: .normal)
+        return button
+    }()
+
     private let emailTextField: PlaceholderTextField = {
         let placeholder = PlaceholderTextField()
         return placeholder
@@ -68,7 +56,7 @@ class SignInViewController: UIViewController
     private let label: UILabel = {
         let label = UILabel()
         label.textColor = .lightGray
-        label.font = UIFont.systemFont(ofSize: Dimen.smallFontSize)
+        label.font = UIFont.systemFont(ofSize: 15)
         label.numberOfLines = 0
         label.textAlignment = .center
         return label
@@ -82,13 +70,11 @@ class SignInViewController: UIViewController
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
     {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        setup()
     }
     
     required init?(coder aDecoder: NSCoder)
     {
         super.init(coder: aDecoder)
-        setup()
     }
     
     // MARK: - View lifecycle
@@ -96,20 +82,13 @@ class SignInViewController: UIViewController
     {
         super.viewDidLoad()
         setupView()
+        setUpNavigationBar()
         interactor?.requestViewInit()
     }
 
-    private func setup() {
-        let viewController = self
-        let interactor = SignInInteractor()
-        let presenter = SignInPresenter()
-        let router = SignInRouter()
-        viewController.interactor = interactor
-        viewController.router = router
-        interactor.presenter = presenter
-        presenter.viewController = viewController
-        router.viewController = viewController
-        router.dataStore = interactor
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setNeedsStatusBarAppearanceUpdate()
     }
     
     // MARK: - Set up views
@@ -120,61 +99,63 @@ class SignInViewController: UIViewController
 
     private func setupView() {
         view.backgroundColor = UIColor.AuthPage.authPageBackgroundColor
-        view.addSubview(emailTextField)
-        view.addSubview(passwordTextField)
-        view.addSubview(authButton)
-        view.addSubview(resetPasswordButton)
-        view.addSubview(label)
+
+        let stackView = UIStackView(arrangedSubviews: [
+            emailTextField,
+            passwordTextField,
+            authButton,
+            resetPasswordButton,
+            label
+        ])
+
+        view.addSubview(stackView)
+        stackView.axis = .vertical
+        stackView.distribution = .fillProportionally
+        stackView.spacing = 20
+        stackView.centerX(inView: view)
+        stackView.centerY(inView: view)
+        stackView.anchor(left: view.leftAnchor,
+                         right: view.rightAnchor,
+                         paddingLeft: 20, paddingRight: 20
+        )
+
         view.addSubview(showButton)
 
-        emailTextField.anchor(
-            bottom: passwordTextField.topAnchor,
-            left: view.leftAnchor,
-            right: view.rightAnchor,
-            paddingBottom: Dimen.paddingBottom,
-            paddingLeft: Dimen.paddingLeft,
-            paddingRight: Dimen.paddingRight
+        showButton.centerY(inView: passwordTextField)
+        showButton.anchor(right: passwordTextField.rightAnchor,
+                          paddingRight: 40
         )
+    }
 
-        passwordTextField.centerXAndYAnchor(view: view)
-        passwordTextField.anchor(
-            left: view.leftAnchor,
-            right: view.rightAnchor,
-            paddingTop: Dimen.paddingTop,
-            paddingLeft: Dimen.paddingLeft,
-            paddingRight: Dimen.paddingRight
-        )
+    private func setUpNavigationBar() {
+        let navigationBarAppearance = UINavigationBarAppearance()
 
-        showButton.centerYAnchor(view: passwordTextField)
-        showButton.anchor(right: passwordTextField.rightAnchor, paddingRight: Dimen.paddingRight * 2)
+        // background color
+        navigationBarAppearance.configureWithDefaultBackground()
+        navigationBarAppearance.backgroundColor = .black
+        // title color
+        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.systemRed]
+        //  item color
+        navigationController?.navigationBar.tintColor = .white
+        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.yellow]
+        navigationController?.setNavigationBarHidden(false, animated: false)
 
-        authButton.anchor(
-            top: passwordTextField.bottomAnchor,
-            left: view.leftAnchor,
-            right: view.rightAnchor,
-            paddingTop: Dimen.paddingTop,
-            paddingLeft: Dimen.paddingLeft,
-            paddingRight: Dimen.paddingRight
-        )
+        navigationItem.standardAppearance = navigationBarAppearance
+        navigationItem.compactAppearance = navigationBarAppearance
+        navigationItem.scrollEdgeAppearance = navigationBarAppearance
 
-        resetPasswordButton.anchor(
-            top: authButton.bottomAnchor,
-            left: view.leftAnchor,
-            right: view.rightAnchor,
-            paddingTop: Dimen.paddingTop,
-            paddingLeft: Dimen.paddingLeft,
-            paddingRight: Dimen.paddingRight,
-            height: Dimen.resetButtonHeight
-        )
+        let backButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(handleDismiss))
 
-        label.anchor(
-            top: resetPasswordButton.bottomAnchor,
-            left: view.leftAnchor,
-            right: view.rightAnchor,
-            paddingTop: Dimen.paddingTop,
-            paddingLeft: Dimen.paddingLeft,
-            paddingRight: Dimen.paddingRight * 2
-        )
+        let helpButtonItem = UIBarButtonItem(title: "Help", style: .plain, target: self, action: nil)
+
+        navigationItem.leftBarButtonItem = backButtonItem
+        navigationItem.rightBarButtonItem = helpButtonItem
+        navigationItem.titleView = logo
+    }
+
+    // MARK: - Status Bar
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     // MARK: - Actions
@@ -185,13 +166,13 @@ class SignInViewController: UIViewController
         if passwordTextField.jTextField.isSecureTextEntry {
             let showPasswordAttributedTitle = NSMutableAttributedString(
                 string: "SHOW",
-                attributes: Dimen.commonAttribute
+                attributes: Constants.Dimen.commonAttribute
             )
             showButton.setAttributedTitle(showPasswordAttributedTitle, for: .normal)
         } else {
             let showPasswordAttributedTitle = NSMutableAttributedString(
                 string: "HIDE",
-                attributes: Dimen.commonAttribute
+                attributes: Constants.Dimen.commonAttribute
             )
             showButton.setAttributedTitle(showPasswordAttributedTitle, for: .normal)
         }
@@ -199,10 +180,15 @@ class SignInViewController: UIViewController
     }
 
     @objc func handleSignIn() {
+        dismiss(animated: true)
     }
 
     @objc func handleRecoverPassword() {
 
+    }
+
+    @objc func handleDismiss() {
+        self.navigationController?.popViewController(animated: true)
     }
 }
 
@@ -214,15 +200,15 @@ extension SignInViewController: SignInDisplayLogic {
 
         let showPasswordAttributedTitle = NSMutableAttributedString(
             string: viewModel.showPasswordButton,
-            attributes: Dimen.commonAttribute
+            attributes: Constants.Dimen.commonAttribute
         )
         let authButtonAttributedTitle = NSMutableAttributedString(
             string: viewModel.authButtonPlaceholder,
-            attributes: Dimen.commonAttribute
+            attributes: Constants.Dimen.commonAttribute
             )
         let resetPasswordAttributedTitle = NSMutableAttributedString(
             string: viewModel.recoverPasswordPlaceholder,
-            attributes: Dimen.commonAttribute
+            attributes: Constants.Dimen.commonAttribute
         )
         showButton.setAttributedTitle(showPasswordAttributedTitle, for: .normal)
         authButton.authAttributedButton.setAttributedTitle(authButtonAttributedTitle, for: .normal)

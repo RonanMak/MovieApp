@@ -13,10 +13,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        guard let scene = (scene as? UIWindowScene) else { return }
-        window = UIWindow(windowScene: scene)
-        window?.rootViewController = SignInViewController()
-        window?.makeKeyAndVisible()
+        setupRootViewController(scene: scene)
+        guard let _ = (scene as? UIWindowScene) else { return }
+    }
+
+    func setupRootViewController(scene: UIScene) {
+        if let windiwScene: UIWindowScene = scene as? UIWindowScene {
+            self.window = UIWindow(windowScene: windiwScene)
+            let mainTabbarVC = MainTabbarController()
+            mainTabbarVC.view.backgroundColor = .white
+            self.window?.rootViewController = mainTabbarVC
+            self.window?.makeKeyAndVisible()
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

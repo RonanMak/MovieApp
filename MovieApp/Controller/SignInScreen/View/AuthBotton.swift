@@ -48,7 +48,7 @@ class AuthButton: UIView {
             height: 48
         )
         
-        containerView.centerYAnchor(view: self)
+        containerView.centerY(inView: self)
 
         authAttributedButton.anchor(
             top: containerView.topAnchor,

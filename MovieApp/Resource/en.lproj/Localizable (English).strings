@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  MovieApp
+
+  Created by Ronan Mak on 1/7/2022.
+  
+*/
+
+//MARK: Tabbar titles
+
+"tabbar_item_home" = "Home";
+"tabbar_item_new" = "New & Hot";
+"tabbar_item_search" = "Search";
+

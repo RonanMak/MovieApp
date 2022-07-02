@@ -10,11 +10,19 @@ import UIKit
 
 protocol HomeDisplayLogic: AnyObject
 {
-//    func displaySomething(viewModel: Home.Something.ViewModel)
 }
 
 class HomeViewController: UIViewController, HomeDisplayLogic
 {
+
+    private lazy var signInButton: UIButton = {
+        let button = UIButton()
+        button.addTarget(self, action: #selector(handleSignIn), for: .touchUpInside)
+        button.backgroundColor = .black
+        return button
+    }()
+
+
     var interactor: HomeBusinessLogic?
     var router: (HomeRoutingLogic & HomeDataPassing)?
     
@@ -30,25 +38,25 @@ class HomeViewController: UIViewController, HomeDisplayLogic
         super.init(coder: aDecoder)
     }
     
-    // MARK: View lifecycle
+    // MARK: - View lifecycle
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        view.backgroundColor = .blue
+        setupUI()
     }
-    
-    // MARK: Do something
-    
-    //@IBOutlet weak var nameTextField: UITextField!
-    
-//    func doSomething()
-//    {
-//        let request = Home.Something.Request()
-//        interactor?.doSomething(request: request)
-//    }
-//
-//    func displaySomething(viewModel: Home.Something.ViewModel)
-//    {
-//        //nameTextField.text = viewModel.name
-//    }
+
+    private func setupUI() {
+        view.backgroundColor = .lightGray
+
+        view.addSubview(signInButton)
+        signInButton.anchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingRight: 20, height: 100)
+    }
+
+    @objc func handleSignIn() {
+        let vc = SignUpConfigurator.createScene()
+        let nav = UINavigationController(rootViewController: vc)
+        nav.modalPresentationStyle = .fullScreen
+        nav.setNavigationBarHidden(true, animated: false)
+        self.present(nav, animated: true)
+    }
 }

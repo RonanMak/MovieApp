@@ -22,6 +22,7 @@ class PrivacyViewController: UIViewController
         textView.textColor = .black
         textView.font = UIFont.systemFont(ofSize: 18)
         textView.isScrollEnabled = false
+        textView.backgroundColor = .clear
         return textView
     }()
 
@@ -33,13 +34,11 @@ class PrivacyViewController: UIViewController
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
     {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        setup()
     }
     
     required init?(coder aDecoder: NSCoder)
     {
         super.init(coder: aDecoder)
-        setup()
     }
     
     // MARK: View lifecycle
@@ -49,19 +48,6 @@ class PrivacyViewController: UIViewController
         setUpView()
         setUpNavigationBar()
         interactor?.requestViewInit()
-    }
-
-    private func setup() {
-        let viewController = self
-        let interactor = PrivacyInteractor()
-        let presenter = PrivacyPresenter()
-        let router = PrivacyRouter()
-        viewController.interactor = interactor
-        viewController.router = router
-        interactor.presenter = presenter
-        presenter.viewController = viewController
-        router.viewController = viewController
-        router.dataStore = interactor
     }
 
     // MARK: - Set up views
@@ -82,13 +68,12 @@ class PrivacyViewController: UIViewController
     private func setUpNavigationBar() {
         let navigationBarAppearance = UINavigationBarAppearance()
 
-        //        // background color
+        // background color
         navigationBarAppearance.configureWithDefaultBackground()
         navigationBarAppearance.backgroundColor = .white
-        //        // title color
+        // title color
         navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.systemRed]
-
-        //        // item color
+        //  item color
         navigationController?.navigationBar.tintColor = .black
 
         navigationItem.standardAppearance = navigationBarAppearance

@@ -9,13 +9,6 @@ import UIKit
 
 class HomeCarouselView: UIView {
 
-    // MARK: - Style
-    enum Dimen {
-        static let pageControllBottomMargin: CGFloat = 80
-        static let pageControllWidth: CGFloat = 150
-        static let pageControllHeight: CGFloat = 50
-    }
-
     // MARK: - Subviews
 
     private lazy var carouselCollectionView: UICollectionView = {
@@ -51,7 +44,7 @@ class HomeCarouselView: UIView {
 
     // MARK: - Properties
 
-    private var pages: Int
+    private var pages: Int = 0
     private var carouselData = [SignUpModel.CarouselData]()
     private var currentPage: Int = 0 {
         didSet {
@@ -61,8 +54,7 @@ class HomeCarouselView: UIView {
 
     // MARK: - Initializers
 
-    init(pages: Int) {
-        self.pages = pages
+    init() {
         super.init(frame: .zero)
         setupUI()
     }
@@ -81,7 +73,7 @@ private extension HomeCarouselView {
     func setupCollectionView() {
         addSubview(carouselCollectionView)
         carouselCollectionView.anchor(
-            top: topAnchor,
+            top: safeAreaLayoutGuide.topAnchor,
             bottom: bottomAnchor,
             left: leftAnchor,
             right: rightAnchor
@@ -92,11 +84,11 @@ private extension HomeCarouselView {
         addSubview(pageControl)
         pageControl.anchor(
             bottom: self.safeAreaLayoutGuide.bottomAnchor,
-            paddingBottom: Dimen.pageControllBottomMargin,
-            width: Dimen.pageControllWidth,
-            height: Dimen.pageControllHeight
+            paddingBottom: 80,
+            width: 150,
+            height: 50
         )
-        pageControl.centerXAnchor(view: self)
+        pageControl.centerX(inView: self)
         pageControl.numberOfPages = pages
     }
 }
@@ -144,7 +136,9 @@ extension HomeCarouselView: UICollectionViewDelegate {
 extension HomeCarouselView {
     func configureView(with data: [SignUpModel.CarouselData]) {
         self.carouselData = data
+        self.pages = data.count
         self.carouselCollectionView.reloadData()
+
     }
 }
 

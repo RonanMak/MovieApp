@@ -29,21 +29,14 @@ class SignUpRouter: SignUpDataPassing
 
 extension SignUpRouter: SignUpRoutingLogic {
     func routeToPrivacy() {
-        let rootViewController = PrivacyViewController()
+        let rootViewController = PrivacyConfigurator.createScene()
         let navigationController = UINavigationController(rootViewController: rootViewController)
 //        navigationController.modalPresentationStyle = .fullScreen
-
         viewController?.present(navigationController, animated: true)
-
-//        let vc = UIViewController()
-//        vc.view.backgroundColor = .red
-//        viewController?.navigationController?.pushViewController(vc, animated: true)
     }
 
     func routeToSignIn() {
-
-        let viewController = UINavigationController(rootViewController: SignInViewController())
-        viewController.navigationController?.pushViewController(viewController, animated: true)
-
+        let vc = SignInConfigurator.createScene()
+        viewController?.navigationController?.pushViewController(vc, animated: true)
     }
 }

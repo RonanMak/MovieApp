@@ -9,23 +9,6 @@ import UIKit
 
 class HomeCarouselCell: UICollectionViewCell {
 
-    // MARK: - Style
-
-    enum Dimen {
-        // basic style
-        static let defaultMargin: CGFloat = 20
-        static let marginLeft: CGFloat = 20
-        static let marginRight: CGFloat = 20
-        static let marginBottom: CGFloat = 20
-        static let marginTop: CGFloat = 20
-
-        // middleText
-        static let fontSize: CGFloat = 35
-
-        // middleSubText
-        static let subTextFontSize: CGFloat = 20
-    }
-
     // MARK: - SubViews
 
     private lazy var imageView: UIImageView = {
@@ -38,7 +21,7 @@ class HomeCarouselCell: UICollectionViewCell {
 
     private let middleText: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: Dimen.fontSize)
+        label.font = UIFont.boldSystemFont(ofSize: Constants.Dimen.largeFontSize)
         label.textColor = .white
         label.numberOfLines = 0
         label.textAlignment = .center
@@ -47,7 +30,7 @@ class HomeCarouselCell: UICollectionViewCell {
 
     private let middleSubText: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: Dimen.subTextFontSize)
+        label.font = UIFont.systemFont(ofSize: Constants.Dimen.mediumFontSize)
         label.textColor = .white
         label.numberOfLines = 0
         label.textAlignment = .center
@@ -87,18 +70,19 @@ private extension HomeCarouselCell {
 
         middleText.anchor(left: imageView.leftAnchor,
                           right: imageView.rightAnchor,
-                          paddingLeft: Dimen.marginLeft,
-                          paddingRight: Dimen.marginRight
+                          paddingLeft: Constants.Dimen.padddingLeft,
+                          paddingRight: Constants.Dimen.padddingRight
         )
-        middleText.centerXAndYAnchor(view: imageView)
+        middleText.centerX(inView: self)
+        middleText.centerY(inView: self)
 
         middleSubText.anchor(
             top: middleText.bottomAnchor,
             left: imageView.leftAnchor,
             right: imageView.rightAnchor,
-            paddingTop: Dimen.marginTop,
-            paddingLeft: Dimen.marginLeft,
-            paddingRight: Dimen.marginRight
+            paddingTop: Constants.Dimen.padddingTop,
+            paddingLeft: Constants.Dimen.padddingTop,
+            paddingRight: Constants.Dimen.padddingRight
         )
     }
 }

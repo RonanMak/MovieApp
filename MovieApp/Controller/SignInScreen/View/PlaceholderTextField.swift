@@ -50,7 +50,7 @@ class PlaceholderTextField: UIView {
         addSubview(jTextField)
 
         jTextField.anchor(top: topAnchor, bottom: bottomAnchor ,left: leftAnchor, right: rightAnchor, paddingLeft: 20, paddingRight: 20, height: 48)
-        jTextField.centerYAnchor(view: self)
+        jTextField.centerY(inView: self)
     }
 
     func configAttributedText() {
