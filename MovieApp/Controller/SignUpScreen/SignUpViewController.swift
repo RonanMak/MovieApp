@@ -16,14 +16,24 @@ protocol SignUpDisplayLogic: AnyObject
 class SignUpViewController: UIViewController
 {
     // MARK: - Properties
-    private lazy var logo = UIButton()
-    private lazy var homeCarouselView = HomeCarouselView()
+    private lazy var signInButtonItem: UIBarButtonItem = {
+        let item = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(handleSignIn))
+        return item
+    }()
+
+    private lazy var privacyButtonItem: UIBarButtonItem = {
+        let item = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(handlePrivacy))
+        return item
+    }()
 
     private lazy var signUpButton: UIButton = {
         let button = UIButton().signUpButton(withText: nil)
         button.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
         return button
     }()
+
+    private lazy var homeCarouselView = HomeCarouselView()
+    private lazy var logo = UIButton()
     
     var interactor: SignUpBusinessLogic?
     var router: (SignUpRoutingLogic & SignUpDataPassing)?
@@ -41,7 +51,7 @@ class SignUpViewController: UIViewController
     }
     
     // MARK: - View lifecycle
-    
+
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -58,16 +68,15 @@ class SignUpViewController: UIViewController
     
     private func setupViews() {
         view.backgroundColor = .black
-        setupHomeCarouselViewUI()
         view.addSubview(homeCarouselView)
+        view.addSubview(signUpButton)
+
         homeCarouselView.anchor(
             top: view.topAnchor,
             bottom: view.bottomAnchor,
             left: view.leftAnchor,
             right: view.rightAnchor
         )
-        view.addSubview(signUpButton)
-
         signUpButton.anchor(
             bottom: view.safeAreaLayoutGuide.bottomAnchor,
             left: view.leftAnchor,
@@ -83,16 +92,12 @@ class SignUpViewController: UIViewController
         //  item color
         navigationController?.navigationBar.tintColor = .white
 
-        let navigationBarAppearance = UINavigationBarAppearance()
+//        let navigationBarAppearance = UINavigationBarAppearance()
         // background color
-        navigationBarAppearance.configureWithDefaultBackground()
-        navigationBarAppearance.backgroundColor = .black
-        // title color
-        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.systemRed]
-    }
-    
-    func setupHomeCarouselViewUI() {
-
+//        navigationBarAppearance.configureWithDefaultBackground()
+//        navigationBarAppearance.backgroundColor = .black
+//        // title color
+//        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.systemRed]
     }
     
     // MARK: - Status Bar
@@ -102,7 +107,7 @@ class SignUpViewController: UIViewController
     
     // MARK: - Handle button actions
     @objc func handleSignUp() {
-        self.dismiss(animated: true)
+
     }
     
     @objc func handleSignIn() {
@@ -119,12 +124,13 @@ class SignUpViewController: UIViewController
 extension SignUpViewController: SignUpDisplayLogic {
     func displayViewInit(viewModel: SignUpModel.ViewInit.ViewModel) {
 
+        signInButtonItem.title = viewModel.signInButtonTitle
+        privacyButtonItem.title = viewModel.privacyButtonTitle
+        
         homeCarouselView.configureView(with: viewModel.carouselViewData)
 
         signUpButton.setTitle(viewModel.signUpButtonTitle, for: .normal)
 
-        let signInButtonItem = UIBarButtonItem(title: viewModel.signInButtonTitle, style: .plain, target: self, action: #selector(handleSignIn))
-        let privacyButtonItem = UIBarButtonItem(title: viewModel.privacyButtonTitle, style: .plain, target: self, action: #selector(handlePrivacy))
         logo.setImage(viewModel.logoImage, for: .normal)
         let logoButtonItem = UIBarButtonItem(customView: logo)
 

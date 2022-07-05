@@ -11,7 +11,7 @@ import UIKit
 protocol SignInBusinessLogic
 {
     func requestViewInit()
-    func requestShowPasswordButtonDidPress()
+    func requestShowPassword(request: SignIn.ShowPasswordButton.Request)
 }
 
 protocol SignInDataStore
@@ -27,12 +27,12 @@ class SignInInteractor: SignInDataStore
 }
 
 extension SignInInteractor: SignInBusinessLogic {
-
     func requestViewInit() {
         presenter?.presentViewInit()
     }
 
-    func requestShowPasswordButtonDidPress() {
-        
+    func requestShowPassword(request: SignIn.ShowPasswordButton.Request) {
+        let response = SignIn.ShowPasswordButton.Response(isSecureTextEntry: request.isSecureTextEntry)
+        presenter?.presentShowPassword(response: response)
     }
 }

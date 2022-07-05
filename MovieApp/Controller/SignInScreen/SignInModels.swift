@@ -16,6 +16,9 @@ enum SignIn
         struct Response {
         }
         struct ViewModel {
+            let logoImage: UIImage
+            let backButtonImage: UIImage
+            let helpButtonText: String
             let emailInputPlaceholder: String
             let passwordInputPlaceholder: String
             let showPasswordButton: String
@@ -24,4 +27,29 @@ enum SignIn
             let learnMoreText: String
         }
     }
+
+    enum ShowPasswordButton {
+        struct Request {
+            var isSecureTextEntry: Bool
+        }
+        struct Response {
+            let isSecureTextEntry: Bool
+        }
+        struct ViewModel {
+            let attributedString: String
+        }
+    }
+
+    enum AuthButton {
+        struct Request {
+          
+        }
+        struct Response {
+
+        }
+        struct ViewModel {
+
+        }
+    }
+
 }

@@ -68,13 +68,14 @@ private extension HomeCarouselCell {
             right: rightAnchor
         )
 
-        middleText.anchor(left: imageView.leftAnchor,
-                          right: imageView.rightAnchor,
-                          paddingLeft: Constants.Dimen.padddingLeft,
-                          paddingRight: Constants.Dimen.padddingRight
+        middleText.anchor(
+            left: imageView.leftAnchor,
+            right: imageView.rightAnchor,
+            paddingLeft: Constants.Dimen.padddingLeft,
+            paddingRight: Constants.Dimen.padddingRight
         )
         middleText.centerX(inView: self)
-        middleText.centerY(inView: self)
+        middleText.centerY(inView: self, constant: -80)
 
         middleSubText.anchor(
             top: middleText.bottomAnchor,

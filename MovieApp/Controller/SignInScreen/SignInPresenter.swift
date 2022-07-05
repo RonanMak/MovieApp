@@ -11,17 +11,20 @@ import UIKit
 protocol SignInPresentationLogic
 {
     func presentViewInit()
+    func presentShowPassword(response: SignIn.ShowPasswordButton.Response)
 }
 
 class SignInPresenter
 {
     weak var viewController: SignInDisplayLogic?
-
 }
 
 extension SignInPresenter: SignInPresentationLogic {
     func presentViewInit() {
 
+        let logoImage = UIImage(named: "netflix-logo") ?? UIImage()
+        let backButtonImage = UIImage(systemName: "chevron.left") ?? UIImage()
+        let helpButtonText = "help"
         let emailInputPlaceholder = "Email or phone number"
         let passwordInputPlaceholder = "Password"
         let showPasswordButton = "SHOW"
@@ -29,8 +32,10 @@ extension SignInPresenter: SignInPresentationLogic {
         let recoverPasswordPlaceholder = "Recover Password"
         let learnMoreText = "Sign in is protected by Google reCAPTCHA to ensure you're not a bot. Learn more."
 
-
         let viewModel = SignIn.ViewInit.ViewModel(
+            logoImage: logoImage,
+            backButtonImage: backButtonImage,
+            helpButtonText: helpButtonText,
             emailInputPlaceholder: emailInputPlaceholder,
             passwordInputPlaceholder: passwordInputPlaceholder,
             showPasswordButton: showPasswordButton,
@@ -39,5 +44,19 @@ extension SignInPresenter: SignInPresentationLogic {
             learnMoreText: learnMoreText
         )
         viewController?.displayViewInit(viewModel: viewModel)
+    }
+
+    func presentShowPassword(response: SignIn.ShowPasswordButton.Response) {
+        var attributedString: String
+        if response.isSecureTextEntry {
+            let showPasswordAttributedTitle = "SHOW"
+            attributedString = showPasswordAttributedTitle
+        } else {
+            let showPasswordAttributedTitle = "HIDE"
+            attributedString = showPasswordAttributedTitle
+        }
+
+        let viewModel = SignIn.ShowPasswordButton.ViewModel(attributedString: attributedString)
+        viewController?.displayShowPassword(viewModel: viewModel)
     }
 }

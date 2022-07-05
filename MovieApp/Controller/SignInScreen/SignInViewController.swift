@@ -12,15 +12,16 @@ import JVFloatLabeledTextField
 protocol SignInDisplayLogic: AnyObject
 {
     func displayViewInit(viewModel: SignIn.ViewInit.ViewModel)
+    func displayShowPassword(viewModel: SignIn.ShowPasswordButton.ViewModel)
 }
 
 class SignInViewController: UIViewController
 {
 
     // MARK: - Properties
-    private lazy var logo: UIButton = {
+
+    private lazy var logoImage: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "netflix-logo"), for: .normal)
         return button
     }()
 
@@ -37,7 +38,11 @@ class SignInViewController: UIViewController
 
     private lazy var showButton: UIButton = {
         let button = UIButton(type: .system)
-        button.addTarget(self, action: #selector(showPassword), for: .touchUpInside)
+        var config = UIButton.Configuration.plain()
+        button.configuration = config
+
+        button.tintColor = .gray
+        button.addTarget(self, action: #selector(handleShowPassword), for: .touchUpInside)
         return button
     }()
 
@@ -53,13 +58,23 @@ class SignInViewController: UIViewController
         return button
     }()
 
-    private let label: UILabel = {
+    private let safetyText: UILabel = {
         let label = UILabel()
         label.textColor = .lightGray
         label.font = UIFont.systemFont(ofSize: 15)
         label.numberOfLines = 0
         label.textAlignment = .center
         return label
+    }()
+
+    private lazy var backButtonItem: UIBarButtonItem = {
+        let item = UIBarButtonItem(image: UIImage(), style: .plain, target: self, action: #selector(handleBack))
+        return item
+    }()
+
+    private lazy var helpButtonItem: UIBarButtonItem = {
+        let item = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        return item
     }()
 
     var interactor: SignInBusinessLogic?
@@ -105,7 +120,7 @@ class SignInViewController: UIViewController
             passwordTextField,
             authButton,
             resetPasswordButton,
-            label
+            safetyText
         ])
 
         view.addSubview(stackView)
@@ -123,34 +138,30 @@ class SignInViewController: UIViewController
 
         showButton.centerY(inView: passwordTextField)
         showButton.anchor(right: passwordTextField.rightAnchor,
-                          paddingRight: 40
+                          paddingRight: 30
         )
     }
 
     private func setUpNavigationBar() {
-        let navigationBarAppearance = UINavigationBarAppearance()
-
-        // background color
-        navigationBarAppearance.configureWithDefaultBackground()
-        navigationBarAppearance.backgroundColor = .black
-        // title color
-        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.systemRed]
-        //  item color
-        navigationController?.navigationBar.tintColor = .white
-        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.yellow]
         navigationController?.setNavigationBarHidden(false, animated: false)
 
-        navigationItem.standardAppearance = navigationBarAppearance
-        navigationItem.compactAppearance = navigationBarAppearance
-        navigationItem.scrollEdgeAppearance = navigationBarAppearance
+        let navigationBarAppearance = UINavigationBarAppearance()
+        // background color
+//        navigationBarAppearance.configureWithDefaultBackground()
+        navigationBarAppearance.backgroundColor = .black
+        // title color
+//        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.systemRed]
+        //  item color
+        navigationController?.navigationBar.tintColor = .white
+//        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.yellow]
 
-        let backButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(handleDismiss))
-
-        let helpButtonItem = UIBarButtonItem(title: "Help", style: .plain, target: self, action: nil)
+//        navigationItem.standardAppearance = navigationBarAppearance
+//        navigationItem.compactAppearance = navigationBarAppearance
+//        navigationItem.scrollEdgeAppearance = navigationBarAppearance
 
         navigationItem.leftBarButtonItem = backButtonItem
         navigationItem.rightBarButtonItem = helpButtonItem
-        navigationItem.titleView = logo
+        navigationItem.titleView = logoImage
     }
 
     // MARK: - Status Bar
@@ -160,23 +171,10 @@ class SignInViewController: UIViewController
     
     // MARK: - Actions
 
-    @objc func showPassword() {
+    @objc func handleShowPassword() {
         passwordTextField.jTextField.isSecureTextEntry.toggle()
-
-        if passwordTextField.jTextField.isSecureTextEntry {
-            let showPasswordAttributedTitle = NSMutableAttributedString(
-                string: "SHOW",
-                attributes: Constants.Dimen.commonAttribute
-            )
-            showButton.setAttributedTitle(showPasswordAttributedTitle, for: .normal)
-        } else {
-            let showPasswordAttributedTitle = NSMutableAttributedString(
-                string: "HIDE",
-                attributes: Constants.Dimen.commonAttribute
-            )
-            showButton.setAttributedTitle(showPasswordAttributedTitle, for: .normal)
-        }
-
+        let request = SignIn.ShowPasswordButton.Request(isSecureTextEntry: passwordTextField.jTextField.isSecureTextEntry)
+        interactor?.requestShowPassword(request: request)
     }
 
     @objc func handleSignIn() {
@@ -187,21 +185,25 @@ class SignInViewController: UIViewController
 
     }
 
-    @objc func handleDismiss() {
+    @objc func handleBack() {
         self.navigationController?.popViewController(animated: true)
     }
 }
 
 extension SignInViewController: SignInDisplayLogic {
+    func displayAuthButtonColor() {
+
+    }
+
     func displayViewInit(viewModel: SignIn.ViewInit.ViewModel) {
 
+        backButtonItem.image = viewModel.backButtonImage
+        helpButtonItem.title = viewModel .helpButtonText
+
+        logoImage.setImage(viewModel.logoImage, for: .normal)
         emailTextField.jTextField.placeholder = viewModel.emailInputPlaceholder
         passwordTextField.jTextField.placeholder = viewModel.passwordInputPlaceholder
 
-        let showPasswordAttributedTitle = NSMutableAttributedString(
-            string: viewModel.showPasswordButton,
-            attributes: Constants.Dimen.commonAttribute
-        )
         let authButtonAttributedTitle = NSMutableAttributedString(
             string: viewModel.authButtonPlaceholder,
             attributes: Constants.Dimen.commonAttribute
@@ -210,9 +212,17 @@ extension SignInViewController: SignInDisplayLogic {
             string: viewModel.recoverPasswordPlaceholder,
             attributes: Constants.Dimen.commonAttribute
         )
-        showButton.setAttributedTitle(showPasswordAttributedTitle, for: .normal)
+        showButton.configuration?.title = viewModel.showPasswordButton
         authButton.authAttributedButton.setAttributedTitle(authButtonAttributedTitle, for: .normal)
         resetPasswordButton.setAttributedTitle(resetPasswordAttributedTitle, for: .normal)
-        label.text = viewModel.learnMoreText
+        safetyText.text = viewModel.learnMoreText
+    }
+
+    func displayShowPassword(viewModel: SignIn.ShowPasswordButton.ViewModel) {
+        self.showButton.configurationUpdateHandler = { [weak self] button in
+            guard let _ = self else { return }
+            button.configuration?.title = viewModel.attributedString
+        }
     }
 }
+
