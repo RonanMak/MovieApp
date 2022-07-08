@@ -31,7 +31,7 @@ extension SignInInteractor: SignInBusinessLogic {
     func requestAuthButton(request: SignIn.AuthButton.Request) {
         var isValid = true
 
-        isValid = !request.email.isEmpty && !request.password.isEmpty ? true : false
+        isValid = request.email.count > 10 && request.password.count > 8 ? true : false
         let response = SignIn.AuthButton.Response(isValid: isValid)
         presenter?.presentAuthButton(response: response)
     }

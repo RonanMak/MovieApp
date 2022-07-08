@@ -64,7 +64,7 @@ extension SignInPresenter: SignInPresentationLogic {
     func presentAuthButton(response: SignIn.AuthButton.Response) {
         var signInButtonColor: UIColor
 
-        signInButtonColor = response.isValid ? UIColor.green : UIColor.cyan
+        signInButtonColor = response.isValid ? UIColor.green : UIColor.rgb(red: 194, green: 194, blue: 194)
         let viewModel = SignIn.AuthButton.ViewModel(signInButtonColor: signInButtonColor)
         viewController?.displayAuthButton(viewModel: viewModel)
     }

@@ -30,6 +30,7 @@ class SignInViewController: UIViewController
         let placeholder = JVFloatLabeledTextField().customfloatLabeledTextField(withText: nil)
 //        placeholder.clearButtonMode = .always
         placeholder.keyboardType = .emailAddress
+        placeholder.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         return placeholder
     }()
 
@@ -37,6 +38,7 @@ class SignInViewController: UIViewController
         let placeholder = JVFloatLabeledTextField().customfloatLabeledTextField(withText: nil)
 //        placeholder.clearButtonMode = .always
         placeholder.isSecureTextEntry = true
+        placeholder.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         return placeholder
     }()
 
@@ -188,9 +190,6 @@ class SignInViewController: UIViewController
     }
 
     @objc func handleSignIn() {
-//        guard let email = emailTextField.text, let password = passwordTextField.text else { return }
-//        let request = SignIn.AuthButton.Request(email: email, password: password)
-//        interactor?.requestAuthButton(request: request)
     }
 
     @objc func handleRecoverPassword() {
@@ -199,6 +198,12 @@ class SignInViewController: UIViewController
 
     @objc func handleBack() {
         self.navigationController?.popViewController(animated: true)
+    }
+
+    @objc func textDidChange() {
+        guard let email = emailTextField.text, let password = passwordTextField.text else { return }
+        let request = SignIn.AuthButton.Request(email: email, password: password)
+        interactor?.requestAuthButton(request: request)
     }
 
     @objc func keyboardShow(_ notification: Notification) {
@@ -271,7 +276,7 @@ extension SignInViewController: UITextFieldDelegate {
 
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool
     {
-//        emailTextField.backgroundColor = UIColor.AuthPage.inputTextFieldBackgroundColor
+        emailTextField.backgroundColor = UIColor.AuthPage.inputTextFieldBackgroundColor
         return true
     }
 
@@ -298,26 +303,6 @@ extension SignInViewController: UITextFieldDelegate {
 //        textField => textField.text 可取得輸入框的值
 //        range => range.location 可取得從第幾個字元開始輸入或複製貼上的 index
 //        string => 可取得當下輸入或複製貼上的字串
-
-        var emailText: String = ""
-        var passwordText: String = ""
-
-        if let text = textField.text {
-            switch textField {
-            case emailTextField:
-                emailText = text
-            case passwordTextField:
-                passwordText = text
-            default:
-                break
-            }
-        }
-
-        print("email \(emailText)")
-        print("pw \(passwordText)")
-        let request = SignIn.AuthButton.Request(email: emailText, password: passwordText)
-        interactor?.requestAuthButton(request: request)
-
         return true
     }
 }
