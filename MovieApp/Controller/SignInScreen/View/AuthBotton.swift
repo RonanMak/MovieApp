@@ -43,8 +43,6 @@ class AuthButton: UIView {
             bottom: bottomAnchor,
             left: leftAnchor,
             right: rightAnchor,
-            paddingLeft: 20,
-            paddingRight: 20,
             height: 48
         )
         

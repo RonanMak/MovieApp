@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import JVFloatLabeledTextField
 
 // MARK: - UIButton
 
@@ -27,6 +28,31 @@ extension UIButton {
         let attributedString = NSMutableAttributedString(string: text ?? "", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20), NSAttributedString.Key.foregroundColor: UIColor.white])
         button.setAttributedTitle(attributedString, for: .normal)
         return button
+    }
+}
+
+extension JVFloatLabeledTextField {
+    func customfloatLabeledTextField(withText text: String?) -> JVFloatLabeledTextField {
+        let textField = JVFloatLabeledTextField()
+        textField.backgroundColor = UIColor.AuthPage.inputTextFieldBackgroundColor
+        textField.placeholderColor = .lightGray
+        textField.floatingLabelActiveTextColor = .lightGray
+        textField.floatingLabelYPadding = 5
+        textField.returnKeyType = .done
+        textField.autocorrectionType = .no
+//        textField.becomeFirstResponder()
+        textField.textColor = .lightGray
+        textField.layer.cornerRadius = 5
+        textField.heightAnchor.constraint(equalToConstant: 48).isActive = true
+
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        view.widthAnchor.constraint(equalToConstant: 20).isActive = true
+
+        textField.leftView = view
+        textField.leftViewMode = .always
+        return textField
     }
 }
 

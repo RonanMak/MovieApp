@@ -42,14 +42,14 @@ enum SignIn
 
     enum AuthButton {
         struct Request {
-          
+            let email: String
+            let password: String
         }
         struct Response {
-
+            let isValid: Bool
         }
         struct ViewModel {
-
+            let signInButtonColor: UIColor
         }
     }
-
 }
