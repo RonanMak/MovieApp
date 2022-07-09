@@ -29,9 +29,24 @@ class SignInInteractor: SignInDataStore
 
 extension SignInInteractor: SignInBusinessLogic {
     func requestAuthButton(request: SignIn.AuthButton.Request) {
-        var isValid = true
+        var isValid: Bool = false
 
-        isValid = request.email.count > 10 && request.password.count > 8 ? true : false
+        // is valid email?
+        let emailResult = request.email.range(
+            of: Constants.RegularExpression.emailPattern,
+            options: .regularExpression
+        )
+        let isValidEmail = (emailResult != nil)
+
+        // is valid password?
+        let passwordResult = request.password.range(
+            of: Constants.RegularExpression.passwordPattern,
+            options: .regularExpression
+        )
+        let isValidPassword = (passwordResult != nil)
+
+        isValid = isValidEmail && isValidPassword ? true : false
+
         let response = SignIn.AuthButton.Response(isValid: isValid)
         presenter?.presentAuthButton(response: response)
     }

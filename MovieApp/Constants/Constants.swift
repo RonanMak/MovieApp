@@ -43,4 +43,24 @@ enum Constants {
         // button height
         static let buttonHeight: CGFloat = 48
     }
+
+    enum RegularExpression {
+        static let passwordPattern =
+        // At least 8 characters
+        #"(?=.{6,})"#
+
+        // At least one capital letter
+//        #"(?=.*[A-Z])"#
+
+        // At least one lowercase letter
+//        #"(?=.*[a-z])"# +
+
+        // At least one digit
+//        #"(?=.*\d)"# +
+
+        // At least one special character
+//        #"(?=.*[ !$%&?._-])"#
+
+        static let emailPattern = #"^\S+@\S+\.\S+$"#
+    }
 }

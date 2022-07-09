@@ -21,7 +21,6 @@ enum SignUpModel
             let signInButtonTitle: String
             let privacyButtonTitle: String
             let carouselViewData: [CarouselData]
-            let homeCarouselpageNumber: Int
         }
     }
 

@@ -45,8 +45,6 @@
 		7C062A1C2859005D006E4E62 /* SignUpConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C062A142859005D006E4E62 /* SignUpConfigurator.swift */; };
 		7C062A1D2859005D006E4E62 /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C062A152859005D006E4E62 /* SignUpViewController.xib */; };
 		7C062A2128590550006E4E62 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C062A2028590550006E4E62 /* Extension.swift */; };
-		7C5CFA8A28673A8C00A1CF61 /* PlaceholderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5CFA8928673A8C00A1CF61 /* PlaceholderTextField.swift */; };
-		7C5CFA8C2867815300A1CF61 /* AuthBotton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5CFA8B2867815300A1CF61 /* AuthBotton.swift */; };
 		7C5CFA8F28680B7B00A1CF61 /* JVFloatLabeledTextField in Frameworks */ = {isa = PBXBuildFile; productRef = 7C5CFA8E28680B7B00A1CF61 /* JVFloatLabeledTextField */; };
 		7C5CFA92286F27A100A1CF61 /* MainTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5CFA91286F27A000A1CF61 /* MainTabbarController.swift */; };
 		7C5CFA95286F292700A1CF61 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5CFA94286F292700A1CF61 /* Constants.swift */; };
@@ -136,8 +134,6 @@
 		7C062A142859005D006E4E62 /* SignUpConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpConfigurator.swift; sourceTree = "<group>"; };
 		7C062A152859005D006E4E62 /* SignUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
 		7C062A2028590550006E4E62 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
-		7C5CFA8928673A8C00A1CF61 /* PlaceholderTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextField.swift; sourceTree = "<group>"; };
-		7C5CFA8B2867815300A1CF61 /* AuthBotton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthBotton.swift; sourceTree = "<group>"; };
 		7C5CFA91286F27A000A1CF61 /* MainTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbarController.swift; sourceTree = "<group>"; };
 		7C5CFA94286F292700A1CF61 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7C5CFAA2286F434A00A1CF61 /* SearchScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenPresenter.swift; sourceTree = "<group>"; };
@@ -361,8 +357,6 @@
 		7C5CFA8828673A5800A1CF61 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				7C5CFA8928673A8C00A1CF61 /* PlaceholderTextField.swift */,
-				7C5CFA8B2867815300A1CF61 /* AuthBotton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -596,12 +590,10 @@
 				7C5CFAAF286F434A00A1CF61 /* SearchScreenInteractor.swift in Sources */,
 				7C062A062859003E006E4E62 /* SignInPresenter.swift in Sources */,
 				7C5CFAAE286F434A00A1CF61 /* SearchScreenViewController.swift in Sources */,
-				7C5CFA8C2867815300A1CF61 /* AuthBotton.swift in Sources */,
 				7C062A1B2859005D006E4E62 /* SignUpInteractor.swift in Sources */,
 				7C0629872858C8BE006E4E62 /* SceneDelegate.swift in Sources */,
 				7C062A082859003E006E4E62 /* SignInRouter.swift in Sources */,
 				7C5CFA92286F27A100A1CF61 /* MainTabbarController.swift in Sources */,
-				7C5CFA8A28673A8C00A1CF61 /* PlaceholderTextField.swift in Sources */,
 				7C0629F92859001D006E4E62 /* HomeModels.swift in Sources */,
 				7C062A1C2859005D006E4E62 /* SignUpConfigurator.swift in Sources */,
 				7CFE28222860AE9300A68D5C /* HomeCarouselCell.swift in Sources */,

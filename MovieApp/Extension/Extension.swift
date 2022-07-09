@@ -29,6 +29,17 @@ extension UIButton {
         button.setAttributedTitle(attributedString, for: .normal)
         return button
     }
+
+    func authButton() -> UIButton {
+        let button = UIButton(type: .system)
+        button.setTitleColor(UIColor.rgb(red: 194, green: 194, blue: 194), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.layer.borderColor = CGColor.rgb(red: 1, green: 1, blue: 1)
+        button.layer.borderWidth = 1
+        button.layer.cornerRadius = 5
+        button.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        return button
+    }
 }
 
 extension JVFloatLabeledTextField {
@@ -140,6 +151,7 @@ extension UIColor {
         static let inputTextFieldPlaceholderColor = UIColor.rgb(red: 188, green: 188, blue: 188)
         static let inputTextFieldBeginEditing = UIColor.rgb(red: 40, green: 40, blue: 40)
         static let authPageBackgroundColor = UIColor.rgb(red: 19, green: 19, blue: 19)
+        static let netflixRed = UIColor.rgb(red: 228, green: 10, blue: 19)
     }
 }
 

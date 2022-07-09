@@ -32,15 +32,13 @@ extension SignUpPresenter: SignUpPresentationLogic {
                                      middleText: "Download and go",
                                      middleSubText: "Save your data. watch offline on a plane, train, or submarine...")
         ]
-        let pageNumber  = 3
 
         let viewModel = SignUpModel.ViewInit.ViewModel(
             logoImage: logoImage,
             signUpButtonTitle: "netflix.com/join",
             signInButtonTitle: "Sign In",
             privacyButtonTitle: "Privacy",
-            carouselViewData: carouselViewData,
-            homeCarouselpageNumber: pageNumber
+            carouselViewData: carouselViewData
         )
 
         viewController?.displayViewInit(viewModel: viewModel)

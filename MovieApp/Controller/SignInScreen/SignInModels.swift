@@ -49,6 +49,7 @@ enum SignIn
             let isValid: Bool
         }
         struct ViewModel {
+            let isValid: Bool
             let signInButtonColor: UIColor
         }
     }

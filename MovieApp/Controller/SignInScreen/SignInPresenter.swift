@@ -49,6 +49,7 @@ extension SignInPresenter: SignInPresentationLogic {
 
     func presentShowPassword(response: SignIn.ShowPasswordButton.Response) {
         var attributedString: String
+
         if response.isSecureTextEntry {
             let showPasswordAttributedTitle = "SHOW"
             attributedString = showPasswordAttributedTitle
@@ -63,9 +64,11 @@ extension SignInPresenter: SignInPresentationLogic {
 
     func presentAuthButton(response: SignIn.AuthButton.Response) {
         var signInButtonColor: UIColor
+        let isValid = response.isValid
 
-        signInButtonColor = response.isValid ? UIColor.green : UIColor.rgb(red: 194, green: 194, blue: 194)
-        let viewModel = SignIn.AuthButton.ViewModel(signInButtonColor: signInButtonColor)
+        signInButtonColor = isValid ? UIColor.AuthPage.netflixRed : UIColor.clear
+
+        let viewModel = SignIn.AuthButton.ViewModel(isValid: isValid, signInButtonColor: signInButtonColor)
         viewController?.displayAuthButton(viewModel: viewModel)
     }
 }

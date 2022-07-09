@@ -43,8 +43,6 @@ class HomeCarouselView: UIView {
     }()
 
     // MARK: - Properties
-
-    private var pages: Int = 0
     private var carouselData = [SignUpModel.CarouselData]()
     private var currentPage: Int = 0 {
         didSet {
@@ -89,7 +87,7 @@ private extension HomeCarouselView {
             height: 50
         )
         pageControl.centerX(inView: self)
-        pageControl.numberOfPages = pages
+//        pageControl.numberOfPages = pages
     }
 }
 
@@ -135,8 +133,8 @@ extension HomeCarouselView: UICollectionViewDelegate {
 // MARK: - configure HomeCarouselView
 extension HomeCarouselView {
     func configureView(with data: [SignUpModel.CarouselData]) {
+        pageControl.numberOfPages = data.count
         self.carouselData = data
-        self.pages = data.count
         self.carouselCollectionView.reloadData()
 
     }

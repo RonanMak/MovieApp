@@ -52,9 +52,10 @@ class SignInViewController: UIViewController
         return button
     }()
 
-    private lazy var authButton: AuthButton = {
-        let button = AuthButton()
-        button.authAttributedButton.addTarget(self, action: #selector(handleSignIn), for: .touchUpInside)
+    private lazy var authButton: UIButton = {
+        let button = UIButton().authButton()
+        button.addTarget(self, action: #selector(handleSignIn), for: .touchUpInside)
+        button.isEnabled = false
         return button
     }()
 
@@ -99,6 +100,7 @@ class SignInViewController: UIViewController
     }
     
     // MARK: - View lifecycle
+
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -107,14 +109,20 @@ class SignInViewController: UIViewController
         interactor?.requestViewInit()
         emailTextField.delegate = self
         passwordTextField.delegate = self
-
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setNeedsStatusBarAppearanceUpdate()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow(_:)),
+                                               name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide(_:)),
+                                               name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     // MARK: - Set up views
@@ -200,7 +208,7 @@ class SignInViewController: UIViewController
         self.navigationController?.popViewController(animated: true)
     }
 
-    @objc func textDidChange() {
+    @objc func textDidChange(_ sender: UITextField) {
         guard let email = emailTextField.text, let password = passwordTextField.text else { return }
         let request = SignIn.AuthButton.Request(email: email, password: password)
         interactor?.requestAuthButton(request: request)
@@ -212,20 +220,17 @@ class SignInViewController: UIViewController
         let keyboardSize = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         let intersection = keyboardSize.intersection(view.frame)
 
-        view.frame.size = CGSize(width: view.frame.width, height: view.frame.height - intersection.height)
-
+        view.frame.size = CGSize(width: view.frame.width, height: view.frame.height - intersection.height + 150)
     }
 
     @objc func keyboardHide(_ notification: Notification) {
         view.frame.size = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-
     }
 }
 
 extension SignInViewController: SignInDisplayLogic {
 
     func displayViewInit(viewModel: SignIn.ViewInit.ViewModel) {
-
         backButtonItem.image = viewModel.backButtonImage
         helpButtonItem.title = viewModel .helpButtonText
 
@@ -242,7 +247,7 @@ extension SignInViewController: SignInDisplayLogic {
             attributes: Constants.Dimen.commonAttribute
         )
         showButton.configuration?.title = viewModel.showPasswordButton
-        authButton.authAttributedButton.setAttributedTitle(authButtonAttributedTitle, for: .normal)
+        authButton.setAttributedTitle(authButtonAttributedTitle, for: .normal)
         resetPasswordButton.setAttributedTitle(resetPasswordAttributedTitle, for: .normal)
         safetyText.text = viewModel.learnMoreText
     }
@@ -255,7 +260,8 @@ extension SignInViewController: SignInDisplayLogic {
     }
 
     func displayAuthButton(viewModel: SignIn.AuthButton.ViewModel) {
-        authButton.containerView.backgroundColor = viewModel.signInButtonColor
+        authButton.backgroundColor = viewModel.signInButtonColor
+        authButton.isEnabled = viewModel.isValid
     }
 }
 
@@ -265,25 +271,13 @@ extension SignInViewController: SignInDisplayLogic {
 extension SignInViewController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool
     {
-        emailTextField.backgroundColor = .green
+        textField.backgroundColor = UIColor.AuthPage.inputTextFieldBeginEditing
         return true
     }
-
-    func textFieldDidBeginEditing(_ textField: UITextField)
-    {
-
-    }
-
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool
-    {
-        emailTextField.backgroundColor = UIColor.AuthPage.inputTextFieldBackgroundColor
-        return true
-    }
-
 
     func textFieldDidEndEditing(_ textField: UITextField)
     {
-        emailTextField.backgroundColor = UIColor.AuthPage.inputTextFieldBackgroundColor
+        textField.backgroundColor = UIColor.AuthPage.inputTextFieldBackgroundColor
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -296,13 +290,6 @@ extension SignInViewController: UITextFieldDelegate {
             textField.resignFirstResponder()
         }
 
-        return true
-    }
-
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//        textField => textField.text 可取得輸入框的值
-//        range => range.location 可取得從第幾個字元開始輸入或複製貼上的 index
-//        string => 可取得當下輸入或複製貼上的字串
         return true
     }
 }
