@@ -324,7 +324,6 @@
 				7C062A012859003E006E4E62 /* SignInModels.swift */,
 				7C062A042859003E006E4E62 /* SignInConfigurator.swift */,
 				7C062A052859003E006E4E62 /* SignInViewController.xib */,
-				7C5CFA8828673A5800A1CF61 /* View */,
 			);
 			path = SignInScreen;
 			sourceTree = "<group>";
@@ -350,13 +349,6 @@
 			children = (
 				7CFE28212860AE9300A68D5C /* HomeCarouselCell.swift */,
 				7CFE28232860B28700A68D5C /* HomeCarouselView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		7C5CFA8828673A5800A1CF61 /* View */ = {
-			isa = PBXGroup;
-			children = (
 			);
 			path = View;
 			sourceTree = "<group>";

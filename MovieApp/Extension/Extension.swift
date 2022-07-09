@@ -42,6 +42,8 @@ extension UIButton {
     }
 }
 
+// MARK: - JVFloatLabeledTextField
+
 extension JVFloatLabeledTextField {
     func customfloatLabeledTextField(withText text: String?) -> JVFloatLabeledTextField {
         let textField = JVFloatLabeledTextField()
@@ -163,5 +165,19 @@ extension CGColor {
     }
 }
 
+// MARK: - UIViewController
 
+extension UIViewController {
+    @objc func keyboardShow(_ notification: Notification) {
+        //從userInfo中取得鍵盤的frame -> size
+        let userInfo = notification.userInfo!
+        let keyboardSize = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let intersection = keyboardSize.intersection(view.frame)
 
+        view.frame.size = CGSize(width: view.frame.width, height: view.frame.height - intersection.height + 150)
+    }
+
+    @objc func keyboardHide(_ notification: Notification) {
+        view.frame.size = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+    }
+}

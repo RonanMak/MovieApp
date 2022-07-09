@@ -105,24 +105,31 @@ class SignInViewController: UIViewController
     {
         super.viewDidLoad()
         setupView()
-        setUpNavigationBar()
+        setupNavigationBar()
+        setupDelegate()
         interactor?.requestViewInit()
-        emailTextField.delegate = self
-        passwordTextField.delegate = self
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow(_:)),
-                                               name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide(_:)),
-                                               name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(keyboardShow(_:)),
+            name: UIResponder.keyboardWillShowNotification, object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(keyboardHide(_:)),
+            name: UIResponder.keyboardWillHideNotification, object: nil
+        )
     }
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(
+            self, name: UIResponder.keyboardWillShowNotification, object: nil
+        )
+        NotificationCenter.default.removeObserver(
+            self, name: UIResponder.keyboardWillHideNotification, object: nil
+        )
     }
     
     // MARK: - Set up views
@@ -162,7 +169,12 @@ class SignInViewController: UIViewController
         )
     }
 
-    private func setUpNavigationBar() {
+    private func setupDelegate() {
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+    }
+
+    private func setupNavigationBar() {
         navigationController?.setNavigationBarHidden(false, animated: false)
 
         let navigationBarAppearance = UINavigationBarAppearance()
@@ -198,6 +210,7 @@ class SignInViewController: UIViewController
     }
 
     @objc func handleSignIn() {
+        dismiss(animated: true)
     }
 
     @objc func handleRecoverPassword() {
@@ -213,19 +226,14 @@ class SignInViewController: UIViewController
         let request = SignIn.AuthButton.Request(email: email, password: password)
         interactor?.requestAuthButton(request: request)
     }
-
-    @objc func keyboardShow(_ notification: Notification) {
-        //從userInfo中取得鍵盤的frame -> size
-        let userInfo = notification.userInfo!
-        let keyboardSize = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        let intersection = keyboardSize.intersection(view.frame)
-
-        view.frame.size = CGSize(width: view.frame.width, height: view.frame.height - intersection.height + 150)
-    }
-
-    @objc func keyboardHide(_ notification: Notification) {
-        view.frame.size = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-    }
+//
+//    @objc func keyboardShow(_ notification: Notification) {
+//
+//    }
+//
+//    @objc func keyboardHide(_ notification: Notification) {
+//        view.frame.size = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+//    }
 }
 
 extension SignInViewController: SignInDisplayLogic {
@@ -265,7 +273,6 @@ extension SignInViewController: SignInDisplayLogic {
     }
 }
 
-
 // MARK: - UITextFieldDelegate
 
 extension SignInViewController: UITextFieldDelegate {
@@ -289,7 +296,6 @@ extension SignInViewController: UITextFieldDelegate {
         } else {
             textField.resignFirstResponder()
         }
-
         return true
     }
 }
