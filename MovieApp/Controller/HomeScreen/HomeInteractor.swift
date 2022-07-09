@@ -1,5 +1,5 @@
 //
-//  HomeInteractor.swift
+//  SignUpInteractor.swift
 //  MovieApp
 //
 //  Created by Ronan Mak on 15/6/2022.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-protocol HomeBusinessLogic
+protocol HomeBusinessLogic: AnyObject
 {
-//    func doSomething(request: Home.Something.Request)
+    func requestViewInit()
 }
 
 protocol HomeDataStore
@@ -18,20 +18,14 @@ protocol HomeDataStore
     //var name: String { get set }
 }
 
-class HomeInteractor: HomeBusinessLogic, HomeDataStore
+class HomeInteractor: HomeDataStore
 {
     var presenter: HomePresentationLogic?
     var worker: HomeWorker?
-    //var name: String = ""
-    
-    // MARK: Do something
-    
-//    func doSomething(request: Home.Something.Request)
-//    {
-//        worker = HomeWorker()
-//        worker?.doSomeWork()
-//
-//        let response = Home.Something.Response()
-//        presenter?.presentSomething(response: response)
-//    }
+}
+
+extension HomeInteractor: HomeBusinessLogic {
+    func requestViewInit() {
+        presenter?.presentViewInit()
+    }
 }

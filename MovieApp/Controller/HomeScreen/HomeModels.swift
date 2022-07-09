@@ -1,5 +1,5 @@
 //
-//  HomeModels.swift
+//  SignUpModels.swift
 //  MovieApp
 //
 //  Created by Ronan Mak on 15/6/2022.
@@ -8,20 +8,25 @@
 
 import UIKit
 
-enum Home
+enum HomeModel
 {
-    // MARK: Use cases
-    
-//    enum Something
-//    {
-//        struct Request
-//        {
-//        }
-//        struct Response
-//        {
-//        }
-//        struct ViewModel
-//        {
-//        }
-//    }
+    enum ViewInit {
+        struct Request {
+        }
+        struct Response {
+        }
+        struct ViewModel {
+            let logoImage: UIImage
+            let signUpButtonTitle: String
+            let signInButtonTitle: String
+            let privacyButtonTitle: String
+            let carouselViewData: [CarouselData]
+        }
+    }
+
+    struct CarouselData {
+        let image: UIImage?
+        let middleText: String
+        let middleSubText: String
+    }
 }

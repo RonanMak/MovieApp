@@ -226,14 +226,6 @@ class SignInViewController: UIViewController
         let request = SignIn.AuthButton.Request(email: email, password: password)
         interactor?.requestAuthButton(request: request)
     }
-//
-//    @objc func keyboardShow(_ notification: Notification) {
-//
-//    }
-//
-//    @objc func keyboardHide(_ notification: Notification) {
-//        view.frame.size = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-//    }
 }
 
 extension SignInViewController: SignInDisplayLogic {
@@ -288,7 +280,6 @@ extension SignInViewController: UITextFieldDelegate {
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-
         let nextTag = textField.tag + 1
 
         if let nextResponder = textField.superview?.viewWithTag(nextTag) {

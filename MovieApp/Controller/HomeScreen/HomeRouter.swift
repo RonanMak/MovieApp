@@ -1,5 +1,5 @@
 //
-//  HomeRouter.swift
+//  SignUpRouter.swift
 //  MovieApp
 //
 //  Created by Ronan Mak on 15/6/2022.
@@ -10,7 +10,8 @@ import UIKit
 
 protocol HomeRoutingLogic
 {
-    //func routeToSomewhere(segue: UIStoryboardSegue?)
+    func routeToPrivacy()
+    func routeToSignIn()
 }
 
 protocol HomeDataPassing
@@ -18,39 +19,24 @@ protocol HomeDataPassing
     var dataStore: HomeDataStore? { get }
 }
 
-class HomeRouter: HomeRoutingLogic, HomeDataPassing
+class HomeRouter: HomeDataPassing
 {
     weak var viewController: HomeViewController?
     var dataStore: HomeDataStore?
-    
-    // MARK: Routing
-    
-    //func routeToSomewhere(segue: UIStoryboardSegue?)
-    //{
-    //  if let segue = segue {
-    //    let destinationVC = segue.destination as! SomewhereViewController
-    //    var destinationDS = destinationVC.router!.dataStore!
-    //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-    //  } else {
-    //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-    //    let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-    //    var destinationDS = destinationVC.router!.dataStore!
-    //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-    //    navigateToSomewhere(source: viewController!, destination: destinationVC)
-    //  }
-    //}
-    
-    // MARK: Navigation
-    
-    //func navigateToSomewhere(source: HomeViewController, destination: SomewhereViewController)
-    //{
-    //  source.show(destination, sender: nil)
-    //}
-    
-    // MARK: Passing data
-    
-    //func passDataToSomewhere(source: HomeDataStore, destination: inout SomewhereDataStore)
-    //{
-    //  destination.name = source.name
-    //}
+}
+
+// MARK: - SignUpRoutingLogic
+
+extension HomeRouter: HomeRoutingLogic {
+    func routeToPrivacy() {
+        let rootViewController = PrivacyConfigurator.createScene()
+        let navigationController = UINavigationController(rootViewController: rootViewController)
+//        navigationController.modalPresentationStyle = .fullScreen
+        viewController?.present(navigationController, animated: true)
+    }
+
+    func routeToSignIn() {
+        let homeViewController = HomeConfigurator.createScene()
+        viewController?.navigationController?.pushViewController(homeViewController, animated: true)
+    }
 }

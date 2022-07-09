@@ -17,8 +17,8 @@ class MainTabbarController: UITabBarController {
         self.tabBar.unselectedItemTintColor = .black
         self.tabBar.isTranslucent = false
 
-        let homeController = HomeConfigurator.createScene()
-        homeController.tabBarItem = UITabBarItem.init(title: Constants.Tabbar.home, image: UIImage(systemName: "house"), tag: 0)
+        let mainController = MainConfigurator.createScene()
+        mainController.tabBarItem = UITabBarItem.init(title: Constants.Tabbar.home, image: UIImage(systemName: "house"), tag: 0)
 
         let NewController = NewScreenConfigurator.createScene()
         NewController.tabBarItem = UITabBarItem.init(title: Constants.Tabbar.new, image: UIImage(systemName: "play.rectangle.on.rectangle.fill"), tag: 1)
@@ -26,7 +26,7 @@ class MainTabbarController: UITabBarController {
         let SearchController = SearchScreenConfigurator.createScene()
         SearchController.tabBarItem = UITabBarItem.init(title: Constants.Tabbar.search, image: UIImage(systemName: "magnifyingglass"), tag: 2)
 
-        let tabBarList = [homeController, NewController, SearchController]
+        let tabBarList = [mainController, NewController, SearchController]
         viewControllers = tabBarList
     }
 }

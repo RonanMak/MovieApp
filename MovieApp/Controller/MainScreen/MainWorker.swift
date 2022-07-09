@@ -1,5 +1,5 @@
 //
-//  SignUpWorker.swift
+//  HomeWorker.swift
 //  MovieApp
 //
 //  Created by Ronan Mak on 15/6/2022.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignUpWorker
+class MainWorker
 {
 //    func doSomeWork()
 //    {

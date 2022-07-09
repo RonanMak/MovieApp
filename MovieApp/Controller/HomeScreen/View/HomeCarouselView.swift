@@ -43,7 +43,7 @@ class HomeCarouselView: UIView {
     }()
 
     // MARK: - Properties
-    private var carouselData = [SignUpModel.CarouselData]()
+    private var carouselData = [HomeModel.CarouselData]()
     private var currentPage: Int = 0 {
         didSet {
             pageControl.currentPage = currentPage
@@ -132,7 +132,7 @@ extension HomeCarouselView: UICollectionViewDelegate {
 
 // MARK: - configure HomeCarouselView
 extension HomeCarouselView {
-    func configureView(with data: [SignUpModel.CarouselData]) {
+    func configureView(with data: [HomeModel.CarouselData]) {
         pageControl.numberOfPages = data.count
         self.carouselData = data
         self.carouselCollectionView.reloadData()
