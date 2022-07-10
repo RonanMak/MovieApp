@@ -12,6 +12,7 @@ protocol SignUpPresentationLogic
 {
     func presentViewInit()
     func presentSignUpButton(response: SignUp.SignUpButton.Response)
+    func presentSignUp(response: SignUp.HandleSignUp.Response)
 }
 
 class SignUpPresenter
@@ -21,6 +22,7 @@ class SignUpPresenter
 }
 
 extension SignUpPresenter: SignUpPresentationLogic {
+
     func presentViewInit() {
         let viewModel = SignUp.ViewInit.ViewModel(
             navigationTitle: "NETFLIX",
@@ -41,5 +43,27 @@ extension SignUpPresenter: SignUpPresentationLogic {
 
         let viewModel = SignUp.SignUpButton.ViewModel(isValid: true, signUpButtonColor: signUpButtonColor)
         viewController?.displaySignUpButton(viewModel: viewModel)
+    }
+
+    func presentSignUp(response: SignUp.HandleSignUp.Response) {
+
+        let isSignUpSuccess: Bool
+        var alertTitle: String? = nil
+        var alertMessage: String? = nil
+
+        if response.isSignUpSuccess {
+            isSignUpSuccess = true
+        } else {
+            isSignUpSuccess = false
+            alertTitle = "Sign Up failed"
+            alertMessage = "Please try again"
+        }
+
+        let viewModel = SignUp.HandleSignUp.ViewModel(
+            isSignUpSuccess: isSignUpSuccess,
+            alertTitle: alertTitle,
+            alertMessage: alertMessage
+        )
+        viewController?.displaySignUp(viewModel: viewModel)
     }
 }

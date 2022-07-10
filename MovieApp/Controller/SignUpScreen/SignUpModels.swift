@@ -40,10 +40,17 @@ enum SignUp
 
     enum HandleSignUp {
         struct Request {
+            let email: String
+            let password: String
+//            let username: String
         }
         struct Response {
+            let isSignUpSuccess: Bool
         }
         struct ViewModel {
+            let isSignUpSuccess: Bool
+            let alertTitle: String?
+            let alertMessage: String?
         }
     }
 }

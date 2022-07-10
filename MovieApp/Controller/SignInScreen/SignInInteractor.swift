@@ -30,7 +30,7 @@ class SignInInteractor: SignInDataStore
 extension SignInInteractor: SignInBusinessLogic {
     func requestSignInButton(request: SignIn.SignInButton.Request) {
 
-        let isValid = HelperFunction.Auth.emailAndPasswordChecking(email: request.email, password: request.password)
+        let isValid = Helper.Auth.emailAndPasswordChecking(email: request.email, password: request.password)
 
         let response = SignIn.SignInButton.Response(isValid: isValid)
         presenter?.presentSignInButton(response: response)

@@ -178,4 +178,14 @@ extension UIViewController {
     @objc func keyboardHide(_ notification: Notification) {
         view.frame.size = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
     }
+
+    func setupActivityIndicator(indicatorView: UIActivityIndicatorView) {
+        indicatorView.translatesAutoresizingMaskIntoConstraints = false
+        indicatorView.hidesWhenStopped = true
+        indicatorView.style = .large
+        indicatorView.color = UIColor.red
+        view.addSubview(indicatorView)
+        indicatorView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        indicatorView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    }
 }

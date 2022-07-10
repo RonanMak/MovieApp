@@ -13,6 +13,7 @@ protocol SignUpDisplayLogic: AnyObject
 {
     func displayViewInit(viewModel: SignUp.ViewInit.ViewModel)
     func displaySignUpButton(viewModel: SignUp.SignUpButton.ViewModel)
+    func displaySignUp(viewModel: SignUp.HandleSignUp.ViewModel)
 }
 
 class SignUpViewController: UIViewController
@@ -42,6 +43,8 @@ class SignUpViewController: UIViewController
         return button
     }()
 
+    var activityIndicator = UIActivityIndicatorView()
+
     var interactor: SignUpBusinessLogic?
     var router: (SignUpRoutingLogic & SignUpDataPassing)?
     
@@ -64,6 +67,7 @@ class SignUpViewController: UIViewController
         super.viewDidLoad()
         setupView()
         setupNavigationBar()
+        setupActivityIndicator(indicatorView: activityIndicator)
         interactor?.requestViewInit()
     }
 
@@ -119,7 +123,14 @@ class SignUpViewController: UIViewController
     @objc func handleSignUp() {
         guard let email = emailTextField.text, let password = passwordTextField.text else { return }
 
-        
+        DispatchQueue.main.async { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.activityIndicator.startAnimating()
+            strongSelf.view.isUserInteractionEnabled = false
+        }
+
+        let request = SignUp.HandleSignUp.Request(email: email, password: password)
+        interactor?.requestSignUp(request: request)
     }
 
     @objc func dismissView() {
@@ -148,5 +159,22 @@ extension SignUpViewController: SignUpDisplayLogic {
     func displaySignUpButton(viewModel: SignUp.SignUpButton.ViewModel) {
         authButton.backgroundColor = viewModel.signUpButtonColor
         authButton.isEnabled = viewModel.isValid
+    }
+
+    func displaySignUp(viewModel: SignUp.HandleSignUp.ViewModel) {
+
+        DispatchQueue.main.async { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.activityIndicator.stopAnimating()
+            strongSelf.view.isUserInteractionEnabled = true
+        }
+
+        if viewModel.isSignUpSuccess {
+            dismiss(animated: true)
+        } else {
+            Helper.Alert.showAlert(viewController: self, title: viewModel.alertTitle, message: viewModel.alertMessage)
+            emailTextField.text = ""
+            passwordTextField.text = ""
+        }
     }
 }

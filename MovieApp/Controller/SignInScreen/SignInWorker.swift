@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import Firebase
 
 class SignInWorker
 {
-//    func doSomeWork()
-//    {
-//    }
+    static let shared = SignInWorker()
+
+    func registerUser(email: String, password: String, completion: @escaping(AuthDataResult?, Error?) -> Void) {
+
+    }
 }

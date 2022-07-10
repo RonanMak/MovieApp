@@ -7,7 +7,7 @@
 
 import UIKit
 
-public enum HelperFunction {
+public enum Helper {
 
     enum Auth {
         
@@ -31,6 +31,18 @@ public enum HelperFunction {
             isValid = isValidEmail && isValidPassword ? true : false
 
             return isValid
+        }
+    }
+
+    enum Alert {
+
+        static func showAlert(viewController: UIViewController, title: String?, message: String?) {
+            guard let title = title, let message = message else { return }
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            DispatchQueue.main.async {
+                viewController.present(alert, animated: true)
+            }
         }
     }
 }

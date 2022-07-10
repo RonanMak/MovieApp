@@ -12,6 +12,7 @@ protocol SignUpBusinessLogic
 {
     func requestViewInit()
     func requestSignUpButton(request: SignUp.SignUpButton.Request)
+    func requestSignUp(request: SignUp.HandleSignUp.Request)
 }
 
 protocol SignUpDataStore
@@ -32,9 +33,28 @@ extension SignUpInteractor: SignUpBusinessLogic {
 
     func requestSignUpButton(request: SignUp.SignUpButton.Request) {
         
-        let isValid = HelperFunction.Auth.emailAndPasswordChecking(email: request.email, password: request.password)
+        let isValid = Helper.Auth.emailAndPasswordChecking(email: request.email, password: request.password)
 
         let response = SignUp.SignUpButton.Response(isValid: isValid)
         presenter?.presentSignUpButton(response: response)
+    }
+
+    func requestSignUp(request: SignUp.HandleSignUp.Request) {
+        var isSignUpSuccess: Bool = false
+
+        let email = request.email
+        let password = request.password
+//        let username = request.username
+        SignUpWorker.shared.registerUser(email: email, password: password, username: "ronan") { error in
+            if let error = error {
+                print("failed to register user \(error.localizedDescription)")
+                isSignUpSuccess = false
+            }
+            isSignUpSuccess = true
+
+            print("debug: \(isSignUpSuccess)")
+            let response = SignUp.HandleSignUp.Response(isSignUpSuccess: isSignUpSuccess)
+            self.presenter?.presentSignUp(response: response)
+        }
     }
 }
