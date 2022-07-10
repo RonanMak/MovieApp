@@ -40,7 +40,7 @@ enum SignIn
         }
     }
 
-    enum AuthButton {
+    enum SignInButton {
         struct Request {
             let email: String
             let password: String

@@ -12,7 +12,7 @@ protocol SignInPresentationLogic
 {
     func presentViewInit()
     func presentShowPassword(response: SignIn.ShowPasswordButton.Response)
-    func presentAuthButton(response: SignIn.AuthButton.Response)
+    func presentSignInButton(response: SignIn.SignInButton.Response)
 }
 
 class SignInPresenter
@@ -62,13 +62,13 @@ extension SignInPresenter: SignInPresentationLogic {
         viewController?.displayShowPassword(viewModel: viewModel)
     }
 
-    func presentAuthButton(response: SignIn.AuthButton.Response) {
+    func presentSignInButton(response: SignIn.SignInButton.Response) {
         var signInButtonColor: UIColor
         let isValid = response.isValid
 
         signInButtonColor = isValid ? UIColor.AuthPage.netflixRed : UIColor.clear
 
-        let viewModel = SignIn.AuthButton.ViewModel(isValid: isValid, signInButtonColor: signInButtonColor)
-        viewController?.displayAuthButton(viewModel: viewModel)
+        let viewModel = SignIn.SignInButton.ViewModel(isValid: isValid, signInButtonColor: signInButtonColor)
+        viewController?.displaySignInButton(viewModel: viewModel)
     }
 }

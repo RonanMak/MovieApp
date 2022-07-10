@@ -1,5 +1,5 @@
 //
-//  SignUpRouter.swift
+//  HomeRouter.swift
 //  MovieApp
 //
 //  Created by Ronan Mak on 15/6/2022.
@@ -12,6 +12,7 @@ protocol HomeRoutingLogic
 {
     func routeToPrivacy()
     func routeToSignIn()
+    func routeToSignUp()
 }
 
 protocol HomeDataPassing
@@ -25,7 +26,7 @@ class HomeRouter: HomeDataPassing
     var dataStore: HomeDataStore?
 }
 
-// MARK: - SignUpRoutingLogic
+// MARK: - HomeRoutingLogic
 
 extension HomeRouter: HomeRoutingLogic {
     func routeToPrivacy() {
@@ -36,7 +37,13 @@ extension HomeRouter: HomeRoutingLogic {
     }
 
     func routeToSignIn() {
-        let homeViewController = HomeConfigurator.createScene()
-        viewController?.navigationController?.pushViewController(homeViewController, animated: true)
+        let signInViewController = SignInConfigurator.createScene()
+        viewController?.navigationController?.pushViewController(signInViewController, animated: true)
+    }
+
+    func routeToSignUp() {
+        let signUpViewController = SignUpConfigurator.createScene()
+        viewController?.navigationController?.pushViewController(signUpViewController, animated: true)
+
     }
 }

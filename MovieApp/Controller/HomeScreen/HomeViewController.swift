@@ -1,5 +1,5 @@
 //
-//  SignUpViewController.swift
+//  HomeViewController.swift
 //  MovieApp
 //
 //  Created by Ronan Mak on 15/6/2022.
@@ -107,7 +107,7 @@ class HomeViewController: UIViewController
     
     // MARK: - Handle button actions
     @objc func handleSignUp() {
-
+        router?.routeToSignUp()
     }
     
     @objc func handleSignIn() {
@@ -119,7 +119,7 @@ class HomeViewController: UIViewController
     }
 }
 
-// MARK: - SignUpDisplayLogic
+// MARK: - HomeDisplayLogic
 
 extension HomeViewController: HomeDisplayLogic {
     func displayViewInit(viewModel: HomeModel.ViewInit.ViewModel) {

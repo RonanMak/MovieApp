@@ -12,7 +12,7 @@ protocol SignInBusinessLogic
 {
     func requestViewInit()
     func requestShowPassword(request: SignIn.ShowPasswordButton.Request)
-    func requestAuthButton(request: SignIn.AuthButton.Request)
+    func requestSignInButton(request: SignIn.SignInButton.Request)
 }
 
 protocol SignInDataStore
@@ -28,27 +28,12 @@ class SignInInteractor: SignInDataStore
 }
 
 extension SignInInteractor: SignInBusinessLogic {
-    func requestAuthButton(request: SignIn.AuthButton.Request) {
-        var isValid: Bool = false
+    func requestSignInButton(request: SignIn.SignInButton.Request) {
 
-        // is valid email?
-        let emailResult = request.email.range(
-            of: Constants.RegularExpression.emailPattern,
-            options: .regularExpression
-        )
-        let isValidEmail = (emailResult != nil)
+        let isValid = HelperFunction.Auth.emailAndPasswordChecking(email: request.email, password: request.password)
 
-        // is valid password?
-        let passwordResult = request.password.range(
-            of: Constants.RegularExpression.passwordPattern,
-            options: .regularExpression
-        )
-        let isValidPassword = (passwordResult != nil)
-
-        isValid = isValidEmail && isValidPassword ? true : false
-
-        let response = SignIn.AuthButton.Response(isValid: isValid)
-        presenter?.presentAuthButton(response: response)
+        let response = SignIn.SignInButton.Response(isValid: isValid)
+        presenter?.presentSignInButton(response: response)
     }
 
     func requestViewInit() {

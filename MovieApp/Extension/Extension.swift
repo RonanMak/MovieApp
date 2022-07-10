@@ -47,7 +47,7 @@ extension UIButton {
 extension JVFloatLabeledTextField {
     func customfloatLabeledTextField(withText text: String?) -> JVFloatLabeledTextField {
         let textField = JVFloatLabeledTextField()
-        textField.backgroundColor = UIColor.AuthPage.inputTextFieldBackgroundColor
+        textField.backgroundColor = UIColor.AuthPage.JVFTextFieldBgColor
         textField.placeholderColor = .lightGray
         textField.floatingLabelActiveTextColor = .lightGray
         textField.floatingLabelYPadding = 5
@@ -148,11 +148,9 @@ extension UIColor {
     }
 
     enum AuthPage {
-        static let inputTextFieldBackgroundColor = UIColor.rgb(red: 51, green: 51, blue: 51)
-        static let inputTextFieldTextColor = UIColor.rgb(red: 17, green: 154, blue: 237)
-        static let inputTextFieldPlaceholderColor = UIColor.rgb(red: 188, green: 188, blue: 188)
-        static let inputTextFieldBeginEditing = UIColor.rgb(red: 40, green: 40, blue: 40)
-        static let authPageBackgroundColor = UIColor.rgb(red: 19, green: 19, blue: 19)
+        static let JVFTextFieldBgColor = UIColor.rgb(red: 51, green: 51, blue: 51)
+        static let JVFTextFieldBeginEditing = UIColor.rgb(red: 40, green: 40, blue: 40)
+        static let signInPageBackgroundColor = UIColor.rgb(red: 19, green: 19, blue: 19)
         static let netflixRed = UIColor.rgb(red: 228, green: 10, blue: 19)
     }
 }

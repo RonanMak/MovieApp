@@ -1,5 +1,5 @@
 //
-//  HomeModels.swift
+//  MainModels.swift
 //  MovieApp
 //
 //  Created by Ronan Mak on 15/6/2022.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum Main
+enum MainModel
 {
     // MARK: Use cases
     

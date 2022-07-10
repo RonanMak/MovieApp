@@ -1,5 +1,5 @@
 //
-//  SignUpModels.swift
+//  HomeModels.swift
 //  MovieApp
 //
 //  Created by Ronan Mak on 15/6/2022.

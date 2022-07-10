@@ -13,7 +13,7 @@ protocol SignInDisplayLogic: AnyObject
 {
     func displayViewInit(viewModel: SignIn.ViewInit.ViewModel)
     func displayShowPassword(viewModel: SignIn.ShowPasswordButton.ViewModel)
-    func displayAuthButton(viewModel: SignIn.AuthButton.ViewModel)
+    func displaySignInButton(viewModel: SignIn.SignInButton.ViewModel)
 }
 
 class SignInViewController: UIViewController
@@ -54,6 +54,7 @@ class SignInViewController: UIViewController
 
     private lazy var authButton: UIButton = {
         let button = UIButton().authButton()
+        button.tintColor = .lightGray
         button.addTarget(self, action: #selector(handleSignIn), for: .touchUpInside)
         button.isEnabled = false
         return button
@@ -75,7 +76,7 @@ class SignInViewController: UIViewController
     }()
 
     private lazy var backButtonItem: UIBarButtonItem = {
-        let item = UIBarButtonItem(image: UIImage(), style: .plain, target: self, action: #selector(handleBack))
+        let item = UIBarButtonItem(image: UIImage(), style: .plain, target: self, action: #selector(dismissView))
         return item
     }()
 
@@ -139,7 +140,7 @@ class SignInViewController: UIViewController
     }
 
     private func setupView() {
-        view.backgroundColor = UIColor.AuthPage.authPageBackgroundColor
+        view.backgroundColor = UIColor.AuthPage.signInPageBackgroundColor
 
         let stackView = UIStackView(arrangedSubviews: [
             emailTextField,
@@ -158,14 +159,16 @@ class SignInViewController: UIViewController
         stackView.anchor(
             left: view.leftAnchor,
             right: view.rightAnchor,
-            paddingLeft: 40, paddingRight: 40
+            paddingLeft: 40,
+            paddingRight: 40
         )
 
         view.addSubview(showButton)
 
         showButton.centerY(inView: passwordTextField)
-        showButton.anchor(right: passwordTextField.rightAnchor,
-                          paddingRight: 15
+        showButton.anchor(
+            right: passwordTextField.rightAnchor,
+            paddingRight: 15
         )
     }
 
@@ -217,14 +220,14 @@ class SignInViewController: UIViewController
 
     }
 
-    @objc func handleBack() {
+    @objc func dismissView() {
         self.navigationController?.popViewController(animated: true)
     }
 
     @objc func textDidChange(_ sender: UITextField) {
         guard let email = emailTextField.text, let password = passwordTextField.text else { return }
-        let request = SignIn.AuthButton.Request(email: email, password: password)
-        interactor?.requestAuthButton(request: request)
+        let request = SignIn.SignInButton.Request(email: email, password: password)
+        interactor?.requestSignInButton(request: request)
     }
 }
 
@@ -238,17 +241,17 @@ extension SignInViewController: SignInDisplayLogic {
         emailTextField.placeholder = viewModel.emailInputPlaceholder
         passwordTextField.placeholder = viewModel.passwordInputPlaceholder
 
-        let authButtonAttributedTitle = NSMutableAttributedString(
-            string: viewModel.authButtonPlaceholder,
-            attributes: Constants.Dimen.commonAttribute
-            )
-        let resetPasswordAttributedTitle = NSMutableAttributedString(
-            string: viewModel.recoverPasswordPlaceholder,
-            attributes: Constants.Dimen.commonAttribute
-        )
+//        let authButtonAttributedTitle = NSMutableAttributedString(
+//            string: viewModel.authButtonPlaceholder,
+//            attributes: Constants.Dimen.commonAttribute
+//            )
+//        let resetPasswordAttributedTitle = NSMutableAttributedString(
+//            string: viewModel.recoverPasswordPlaceholder,
+//            attributes: Constants.Dimen.commonAttribute
+//        )
         showButton.configuration?.title = viewModel.showPasswordButton
-        authButton.setAttributedTitle(authButtonAttributedTitle, for: .normal)
-        resetPasswordButton.setAttributedTitle(resetPasswordAttributedTitle, for: .normal)
+        authButton.setTitle(viewModel.authButtonPlaceholder, for: .normal)
+        resetPasswordButton.setTitle(viewModel.recoverPasswordPlaceholder, for: .normal)
         safetyText.text = viewModel.learnMoreText
     }
 
@@ -259,7 +262,7 @@ extension SignInViewController: SignInDisplayLogic {
         }
     }
 
-    func displayAuthButton(viewModel: SignIn.AuthButton.ViewModel) {
+    func displaySignInButton(viewModel: SignIn.SignInButton.ViewModel) {
         authButton.backgroundColor = viewModel.signInButtonColor
         authButton.isEnabled = viewModel.isValid
     }
@@ -270,13 +273,13 @@ extension SignInViewController: SignInDisplayLogic {
 extension SignInViewController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool
     {
-        textField.backgroundColor = UIColor.AuthPage.inputTextFieldBeginEditing
+        textField.backgroundColor = UIColor.AuthPage.JVFTextFieldBeginEditing
         return true
     }
 
     func textFieldDidEndEditing(_ textField: UITextField)
     {
-        textField.backgroundColor = UIColor.AuthPage.inputTextFieldBackgroundColor
+        textField.backgroundColor = UIColor.AuthPage.JVFTextFieldBgColor
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

@@ -1,21 +1,21 @@
 //
-//  MainConfigurator.swift
+//  SignUpConfigurator.swift
 //  MovieApp
 //
-//  Created by Ronan Mak on 15/6/2022.
+//  Created by Ronan Mak on 10/7/2022.
 //  Copyright © 2022 ___ORGANIZATIONNAME___. All rights reserved.
 //
 
 import UIKit
 
-class MainConfigurator
+class SignUpConfigurator
 {
-    class func createScene() -> MainViewController
+    class func createScene() -> SignUpViewController
     {
-        let viewController = MainViewController(nibName: nil, bundle: nil)
-        let interactor = MainInteractor()
-        let presenter = MainPresenter()
-        let router = MainRouter()
+        let viewController = SignUpViewController(nibName: nil, bundle: nil)
+        let interactor = SignUpInteractor()
+        let presenter = SignUpPresenter()
+        let router = SignUpRouter()
         viewController.interactor = interactor
         viewController.router = router
         interactor.presenter = presenter

@@ -1,27 +1,27 @@
 //
-//  MainRouter.swift
+//  SignUpRouter.swift
 //  MovieApp
 //
-//  Created by Ronan Mak on 15/6/2022.
+//  Created by Ronan Mak on 10/7/2022.
 //  Copyright © 2022 ___ORGANIZATIONNAME___. All rights reserved.
 //
 
 import UIKit
 
-protocol MainRoutingLogic
+protocol SignUpRoutingLogic
 {
     //func routeToSomewhere(segue: UIStoryboardSegue?)
 }
 
-protocol MainDataPassing
+protocol SignUpDataPassing
 {
-    var dataStore: MainDataStore? { get }
+    var dataStore: SignUpDataStore? { get }
 }
 
-class MainRouter: MainRoutingLogic, MainDataPassing
+class SignUpRouter: SignUpRoutingLogic, SignUpDataPassing
 {
-    weak var viewController: MainViewController?
-    var dataStore: MainDataStore?
+    weak var viewController: SignUpViewController?
+    var dataStore: SignUpDataStore?
     
     // MARK: Routing
     
@@ -42,14 +42,14 @@ class MainRouter: MainRoutingLogic, MainDataPassing
     
     // MARK: Navigation
     
-    //func navigateToSomewhere(source: HomeViewController, destination: SomewhereViewController)
+    //func navigateToSomewhere(source: SignUpViewController, destination: SomewhereViewController)
     //{
     //  source.show(destination, sender: nil)
     //}
     
     // MARK: Passing data
     
-    //func passDataToSomewhere(source: HomeDataStore, destination: inout SomewhereDataStore)
+    //func passDataToSomewhere(source: SignUpDataStore, destination: inout SomewhereDataStore)
     //{
     //  destination.name = source.name
     //}
