@@ -47,17 +47,16 @@ extension SignInInteractor: SignInBusinessLogic {
     }
 
     func requestSignIn(request: SignIn.SignIn.Request) {
-        var isSignInSuccess: Bool = false
+        var isSignInSuccess: Bool = true
 
         let email = request.email
         let password = request.password
 
         SignInWorker.shared.userSignIn(email: email, password: password) { (result, error) in
             if let error = error {
-                print("failed to register user \(error.localizedDescription)")
+                print("failed to sign in user \(error.localizedDescription)")
                 isSignInSuccess = false
             }
-            isSignInSuccess = true
 
             let response = SignIn.SignIn.Response(isSignInSuccess: isSignInSuccess)
             self.presenter?.presentSignIn(response: response)

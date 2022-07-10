@@ -40,7 +40,7 @@ extension SignUpInteractor: SignUpBusinessLogic {
     }
 
     func requestSignUp(request: SignUp.HandleSignUp.Request) {
-        var isSignUpSuccess: Bool = false
+        var isSignUpSuccess: Bool = true
 
         let email = request.email
         let password = request.password
@@ -51,7 +51,6 @@ extension SignUpInteractor: SignUpBusinessLogic {
                 print("failed to register user \(error.localizedDescription)")
                 isSignUpSuccess = false
             }
-            isSignUpSuccess = true
 
             let response = SignUp.HandleSignUp.Response(isSignUpSuccess: isSignUpSuccess)
             self.presenter?.presentSignUp(response: response)
