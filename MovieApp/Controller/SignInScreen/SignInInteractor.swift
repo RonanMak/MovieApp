@@ -13,6 +13,7 @@ protocol SignInBusinessLogic
     func requestViewInit()
     func requestShowPassword(request: SignIn.ShowPasswordButton.Request)
     func requestSignInButton(request: SignIn.SignInButton.Request)
+    func requestSignIn(request: SignIn.SignIn.Request)
 }
 
 protocol SignInDataStore
@@ -43,5 +44,23 @@ extension SignInInteractor: SignInBusinessLogic {
     func requestShowPassword(request: SignIn.ShowPasswordButton.Request) {
         let response = SignIn.ShowPasswordButton.Response(isSecureTextEntry: request.isSecureTextEntry)
         presenter?.presentShowPassword(response: response)
+    }
+
+    func requestSignIn(request: SignIn.SignIn.Request) {
+        var isSignInSuccess: Bool = false
+
+        let email = request.email
+        let password = request.password
+
+        SignInWorker.shared.userSignIn(email: email, password: password) { (result, error) in
+            if let error = error {
+                print("failed to register user \(error.localizedDescription)")
+                isSignInSuccess = false
+            }
+            isSignInSuccess = true
+
+            let response = SignIn.SignIn.Response(isSignInSuccess: isSignInSuccess)
+            self.presenter?.presentSignIn(response: response)
+        }
     }
 }

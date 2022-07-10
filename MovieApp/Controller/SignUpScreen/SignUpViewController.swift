@@ -20,6 +20,13 @@ class SignUpViewController: UIViewController
 {
     // MARK: - Properties
 
+    private let usernameTextField: JVFloatLabeledTextField = {
+        let placeholder = JVFloatLabeledTextField().customfloatLabeledTextField(withText: nil)
+//        placeholder.clearButtonMode = .always
+        placeholder.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        return placeholder
+    }()
+
     private let emailTextField: JVFloatLabeledTextField = {
         let placeholder = JVFloatLabeledTextField().customfloatLabeledTextField(withText: nil)
 //        placeholder.clearButtonMode = .always
@@ -43,7 +50,7 @@ class SignUpViewController: UIViewController
         return button
     }()
 
-    var activityIndicator = UIActivityIndicatorView()
+    private var activityIndicator = UIActivityIndicatorView()
 
     var interactor: SignUpBusinessLogic?
     var router: (SignUpRoutingLogic & SignUpDataPassing)?
@@ -77,6 +84,7 @@ class SignUpViewController: UIViewController
         view.backgroundColor = UIColor.AuthPage.signInPageBackgroundColor
 
         let stackView = UIStackView(arrangedSubviews: [
+            usernameTextField,
             emailTextField,
             passwordTextField,
             authButton
@@ -121,7 +129,7 @@ class SignUpViewController: UIViewController
     // MARK: - Actions
 
     @objc func handleSignUp() {
-        guard let email = emailTextField.text, let password = passwordTextField.text else { return }
+        guard let email = emailTextField.text, let password = passwordTextField.text, let username = usernameTextField.text else { return }
 
         DispatchQueue.main.async { [weak self] in
             guard let strongSelf = self else { return }
@@ -129,7 +137,7 @@ class SignUpViewController: UIViewController
             strongSelf.view.isUserInteractionEnabled = false
         }
 
-        let request = SignUp.HandleSignUp.Request(email: email, password: password)
+        let request = SignUp.HandleSignUp.Request(username: username, email: email, password: password)
         interactor?.requestSignUp(request: request)
     }
 
@@ -144,6 +152,8 @@ class SignUpViewController: UIViewController
     }
 }
 
+// MARK: - SignUpDisplayLogic
+
 extension SignUpViewController: SignUpDisplayLogic {
 
     func displayViewInit(viewModel: SignUp.ViewInit.ViewModel) {
@@ -151,6 +161,7 @@ extension SignUpViewController: SignUpDisplayLogic {
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: viewModel.backButtonIcon), style: .plain, target: self, action: #selector(dismissView))
 
+        usernameTextField.placeholder = viewModel.usernameInputPlaceholder
         emailTextField.placeholder = viewModel.emailInputPlaceholder
         passwordTextField.placeholder = viewModel.passwordInputPlaceholder
         authButton.setTitle(viewModel.authButtonPlaceholder, for: .normal)

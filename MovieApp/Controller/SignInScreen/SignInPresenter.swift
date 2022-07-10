@@ -13,6 +13,7 @@ protocol SignInPresentationLogic
     func presentViewInit()
     func presentShowPassword(response: SignIn.ShowPasswordButton.Response)
     func presentSignInButton(response: SignIn.SignInButton.Response)
+    func presentSignIn(response: SignIn.SignIn.Response)
 }
 
 class SignInPresenter
@@ -70,5 +71,27 @@ extension SignInPresenter: SignInPresentationLogic {
 
         let viewModel = SignIn.SignInButton.ViewModel(isValid: isValid, signInButtonColor: signInButtonColor)
         viewController?.displaySignInButton(viewModel: viewModel)
+    }
+
+    func presentSignIn(response: SignIn.SignIn.Response) {
+
+        let isSignInSuccess: Bool
+        var alertTitle: String? = nil
+        var alertMessage: String? = nil
+
+        if response.isSignInSuccess {
+            isSignInSuccess = true
+        } else {
+            isSignInSuccess = false
+            alertTitle = "Sign In failed"
+            alertMessage = "Please try again"
+        }
+
+        let viewModel = SignIn.SignIn.ViewModel(
+            isSignInSuccess: isSignInSuccess,
+            alertTitle: alertTitle,
+            alertMessage: alertMessage
+        )
+        viewController?.displaySignIn(viewModel: viewModel)
     }
 }

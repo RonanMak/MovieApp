@@ -19,7 +19,6 @@ extension UIButton {
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
         button.setTitle(text, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-
         return button
     }
 

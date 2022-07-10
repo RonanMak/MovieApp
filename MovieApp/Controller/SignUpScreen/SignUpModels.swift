@@ -18,6 +18,7 @@ enum SignUp
         struct ViewModel {
             let navigationTitle: String
             let backButtonIcon: String
+            let usernameInputPlaceholder: String
             let emailInputPlaceholder: String
             let passwordInputPlaceholder: String
             let authButtonPlaceholder: String
@@ -40,9 +41,9 @@ enum SignUp
 
     enum HandleSignUp {
         struct Request {
+            let username: String
             let email: String
             let password: String
-//            let username: String
         }
         struct Response {
             let isSignUpSuccess: Bool

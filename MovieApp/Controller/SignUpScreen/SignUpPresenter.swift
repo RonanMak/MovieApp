@@ -27,6 +27,7 @@ extension SignUpPresenter: SignUpPresentationLogic {
         let viewModel = SignUp.ViewInit.ViewModel(
             navigationTitle: "NETFLIX",
             backButtonIcon: "chevron.backward",
+            usernameInputPlaceholder: "Username",
             emailInputPlaceholder: "Email",
             passwordInputPlaceholder: "Password",
             authButtonPlaceholder: "Sign Up"

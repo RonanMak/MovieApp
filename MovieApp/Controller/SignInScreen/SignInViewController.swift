@@ -14,6 +14,7 @@ protocol SignInDisplayLogic: AnyObject
     func displayViewInit(viewModel: SignIn.ViewInit.ViewModel)
     func displayShowPassword(viewModel: SignIn.ShowPasswordButton.ViewModel)
     func displaySignInButton(viewModel: SignIn.SignInButton.ViewModel)
+    func displaySignIn(viewModel: SignIn.SignIn.ViewModel)
 }
 
 class SignInViewController: UIViewController
@@ -85,6 +86,8 @@ class SignInViewController: UIViewController
         return item
     }()
 
+    private var activityIndicator = UIActivityIndicatorView()
+
     var interactor: SignInBusinessLogic?
     var router: (SignInRoutingLogic & SignInDataPassing)?
     
@@ -108,6 +111,7 @@ class SignInViewController: UIViewController
         setupView()
         setupNavigationBar()
         setupDelegate()
+        setupActivityIndicator(indicatorView: activityIndicator)
         interactor?.requestViewInit()
     }
 
@@ -213,7 +217,16 @@ class SignInViewController: UIViewController
     }
 
     @objc func handleSignIn() {
-        dismiss(animated: true)
+        guard let email = emailTextField.text, let password = passwordTextField.text else { return }
+
+        DispatchQueue.main.async { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.activityIndicator.startAnimating()
+            strongSelf.view.isUserInteractionEnabled = false
+        }
+        
+        let request = SignIn.SignIn.Request(email: email, password: password)
+        interactor?.requestSignIn(request: request)
     }
 
     @objc func handleRecoverPassword() {
@@ -230,6 +243,8 @@ class SignInViewController: UIViewController
         interactor?.requestSignInButton(request: request)
     }
 }
+
+// MARK: - SignInDisplayLogic
 
 extension SignInViewController: SignInDisplayLogic {
 
@@ -265,6 +280,22 @@ extension SignInViewController: SignInDisplayLogic {
     func displaySignInButton(viewModel: SignIn.SignInButton.ViewModel) {
         authButton.backgroundColor = viewModel.signInButtonColor
         authButton.isEnabled = viewModel.isValid
+    }
+
+    func displaySignIn(viewModel: SignIn.SignIn.ViewModel) {
+        DispatchQueue.main.async { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.activityIndicator.stopAnimating()
+            strongSelf.view.isUserInteractionEnabled = true
+        }
+
+        if viewModel.isSignInSuccess {
+            dismiss(animated: true)
+        } else {
+            Helper.Alert.showAlert(viewController: self, title: viewModel.alertTitle, message: viewModel.alertMessage)
+            emailTextField.text = ""
+            passwordTextField.text = ""
+        }
     }
 }
 

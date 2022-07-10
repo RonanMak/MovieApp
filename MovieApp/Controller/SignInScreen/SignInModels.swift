@@ -28,6 +28,21 @@ enum SignIn
         }
     }
 
+    enum SignIn {
+        struct Request {
+            let email: String
+            let password: String
+        }
+        struct Response {
+            let isSignInSuccess: Bool
+        }
+        struct ViewModel {
+            let isSignInSuccess: Bool
+            let alertTitle: String?
+            let alertMessage: String?
+        }
+    }
+
     enum ShowPasswordButton {
         struct Request {
             var isSecureTextEntry: Bool

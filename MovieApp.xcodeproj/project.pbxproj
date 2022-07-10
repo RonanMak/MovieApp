@@ -342,12 +342,12 @@
 		7C0629BA2858CEF5006E4E62 /* SignInScreen */ = {
 			isa = PBXGroup;
 			children = (
+				7C062A012859003E006E4E62 /* SignInModels.swift */,
 				7C062A022859003E006E4E62 /* SignInViewController.swift */,
 				7C062A032859003E006E4E62 /* SignInInteractor.swift */,
 				7C0629FE2859003E006E4E62 /* SignInPresenter.swift */,
 				7C0629FF2859003E006E4E62 /* SignInWorker.swift */,
 				7C062A002859003E006E4E62 /* SignInRouter.swift */,
-				7C062A012859003E006E4E62 /* SignInModels.swift */,
 				7C062A042859003E006E4E62 /* SignInConfigurator.swift */,
 				7C062A052859003E006E4E62 /* SignInViewController.xib */,
 			);

@@ -44,15 +44,15 @@ extension SignUpInteractor: SignUpBusinessLogic {
 
         let email = request.email
         let password = request.password
-//        let username = request.username
-        SignUpWorker.shared.registerUser(email: email, password: password, username: "ronan") { error in
+        let username = request.username
+
+        SignUpWorker.shared.registerUser(email: email, password: password, username: username) { error in
             if let error = error {
                 print("failed to register user \(error.localizedDescription)")
                 isSignUpSuccess = false
             }
             isSignUpSuccess = true
 
-            print("debug: \(isSignUpSuccess)")
             let response = SignUp.HandleSignUp.Response(isSignUpSuccess: isSignUpSuccess)
             self.presenter?.presentSignUp(response: response)
         }

@@ -13,7 +13,7 @@ class SignInWorker
 {
     static let shared = SignInWorker()
 
-    func registerUser(email: String, password: String, completion: @escaping(AuthDataResult?, Error?) -> Void) {
-
+    func userSignIn(email: String, password: String, completion: @escaping(AuthDataResult?, Error?) -> Void) {
+        Auth.auth().signIn(withEmail: email, password: password, completion: completion)
     }
 }

@@ -26,7 +26,6 @@ class SignUpWorker
             var userData: [String: Any] = [
                 "uid": uid,
                 "email": email,
-                "password": password,
                 "username": username
             ]
 
