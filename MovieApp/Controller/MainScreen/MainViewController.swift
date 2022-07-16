@@ -15,11 +15,17 @@ protocol MainDisplayLogic: AnyObject
 class MainViewController: UIViewController, MainDisplayLogic
 {
 
-    private lazy var homeFeedTableView: UITableView = {
-        let tableView = UITableView()
+    private lazy var mainFeedTableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .grouped)
+        tableView.backgroundColor = .black
         return tableView
     }()
 
+    private lazy var mainTableHeaderView: MainHeaderView = {
+        let view = MainHeaderView()
+        view.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 450)
+        return view
+    }()
 
     var interactor: MainBusinessLogic?
     var router: (MainRoutingLogic & MainDataPassing)?
@@ -37,33 +43,37 @@ class MainViewController: UIViewController, MainDisplayLogic
     }
     
     // MARK: - View lifecycle
+
     override func viewDidLoad()
     {
         super.viewDidLoad()
 
-        setupUI()
+        setupViews()
         setupHomeFeedTableView()
         setupNavigationBar()
         setupConstraint()
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        mainFeedTableView.frame = view.bounds
+    }
     // MARL: - Setup views
 
-    private func setupUI() {
-        view.backgroundColor = .lightGray
-        view.addSubview(homeFeedTableView)
+    private func setupViews() {
+        view.addSubview(mainFeedTableView)
+        mainFeedTableView.tableHeaderView = mainTableHeaderView
     }
 
     private func setupHomeFeedTableView() {
-        homeFeedTableView.delegate = self
-        homeFeedTableView.dataSource = self
-        homeFeedTableView.register(
-            UITableViewCell.self, forCellReuseIdentifier: "cell"
+        mainFeedTableView.delegate = self
+        mainFeedTableView.dataSource = self
+        mainFeedTableView.register(
+            CollectionViewTableViewCell.self, forCellReuseIdentifier: CollectionViewTableViewCell.identifier
         )
     }
 
     private func setupConstraint() {
-        homeFeedTableView.frame = view.bounds
     }
 
     // MARL: - Setup navigation bar
@@ -96,14 +106,19 @@ class MainViewController: UIViewController, MainDisplayLogic
 // MARK: - UITableViewDelegate
 
 extension MainViewController: UITableViewDelegate {
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 20
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "hello"
-        return cell 
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CollectionViewTableViewCell.identifier, for: indexPath) as? CollectionViewTableViewCell else { return UITableViewCell()
+
+        }
+        return cell
     }
 }
 

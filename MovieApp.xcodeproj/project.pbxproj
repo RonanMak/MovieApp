@@ -53,6 +53,8 @@
 		7C15621928825ADE005847FB /* DownloadScreenInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C15621128825ADE005847FB /* DownloadScreenInteractor.swift */; };
 		7C15621A28825ADE005847FB /* DownloadScreenConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C15621228825ADE005847FB /* DownloadScreenConfigurator.swift */; };
 		7C15621B28825ADE005847FB /* DownloadScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C15621328825ADE005847FB /* DownloadScreenViewController.xib */; };
+		7C15621E2882C945005847FB /* CollectionViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C15621D2882C945005847FB /* CollectionViewTableViewCell.swift */; };
+		7C1562202882DF48005847FB /* MainHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C15621F2882DF48005847FB /* MainHeaderView.swift */; };
 		7C5CFA8F28680B7B00A1CF61 /* JVFloatLabeledTextField in Frameworks */ = {isa = PBXBuildFile; productRef = 7C5CFA8E28680B7B00A1CF61 /* JVFloatLabeledTextField */; };
 		7C5CFA92286F27A100A1CF61 /* MainTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5CFA91286F27A000A1CF61 /* MainTabbarController.swift */; };
 		7C5CFA95286F292700A1CF61 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5CFA94286F292700A1CF61 /* Constants.swift */; };
@@ -162,6 +164,8 @@
 		7C15621128825ADE005847FB /* DownloadScreenInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadScreenInteractor.swift; sourceTree = "<group>"; };
 		7C15621228825ADE005847FB /* DownloadScreenConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadScreenConfigurator.swift; sourceTree = "<group>"; };
 		7C15621328825ADE005847FB /* DownloadScreenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DownloadScreenViewController.xib; sourceTree = "<group>"; };
+		7C15621D2882C945005847FB /* CollectionViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewTableViewCell.swift; sourceTree = "<group>"; };
+		7C15621F2882DF48005847FB /* MainHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHeaderView.swift; sourceTree = "<group>"; };
 		7C5CFA91286F27A000A1CF61 /* MainTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbarController.swift; sourceTree = "<group>"; };
 		7C5CFA94286F292700A1CF61 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7C5CFAA2286F434A00A1CF61 /* SearchScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenPresenter.swift; sourceTree = "<group>"; };
@@ -344,6 +348,7 @@
 		7C0629B92858CEBE006E4E62 /* MainScreen */ = {
 			isa = PBXGroup;
 			children = (
+				7C15621C2882C907005847FB /* Views */,
 				7C0629F12859001D006E4E62 /* MainModels.swift */,
 				7C0629F32859001D006E4E62 /* MainInteractor.swift */,
 				7C0629EE2859001D006E4E62 /* MainPresenter.swift */,
@@ -409,6 +414,15 @@
 				7C15621328825ADE005847FB /* DownloadScreenViewController.xib */,
 			);
 			path = DownloadScreen;
+			sourceTree = "<group>";
+		};
+		7C15621C2882C907005847FB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7C15621D2882C945005847FB /* CollectionViewTableViewCell.swift */,
+				7C15621F2882DF48005847FB /* MainHeaderView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		7C5CFA90286F24FD00A1CF61 /* MainTabbar */ = {
@@ -650,6 +664,7 @@
 				7CF855CF287A88E700ACDE77 /* SignUpModels.swift in Sources */,
 				7C0629F62859001D006E4E62 /* MainPresenter.swift in Sources */,
 				7C15621828825ADE005847FB /* DownloadScreenViewController.swift in Sources */,
+				7C15621E2882C945005847FB /* CollectionViewTableViewCell.swift in Sources */,
 				7CF855D2287A88E700ACDE77 /* SignUpConfigurator.swift in Sources */,
 				7C5CFABD286F438000A1CF61 /* NewScreenRouter.swift in Sources */,
 				7C5CFABB286F438000A1CF61 /* NewScreenPresenter.swift in Sources */,
@@ -666,6 +681,7 @@
 				7C0629852858C8BE006E4E62 /* AppDelegate.swift in Sources */,
 				7C5CFAB0286F434A00A1CF61 /* SearchScreenConfigurator.swift in Sources */,
 				7CFE281B285E19D600A68D5C /* PrivacyViewController.swift in Sources */,
+				7C1562202882DF48005847FB /* MainHeaderView.swift in Sources */,
 				7C0629F72859001D006E4E62 /* MainWorker.swift in Sources */,
 				7C0629FB2859001D006E4E62 /* MainInteractor.swift in Sources */,
 				7C5CFAC0286F438000A1CF61 /* NewScreenInteractor.swift in Sources */,
