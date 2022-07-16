@@ -182,9 +182,31 @@ extension UIViewController {
         indicatorView.translatesAutoresizingMaskIntoConstraints = false
         indicatorView.hidesWhenStopped = true
         indicatorView.style = .large
-        indicatorView.color = UIColor.red
+        indicatorView.color = UIColor.gray
         view.addSubview(indicatorView)
         indicatorView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         indicatorView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    }
+
+    func setupNavigationBar(backgroundColor: UIColor, titleTextColor: UIColor, itemTintColor: UIColor ) {
+        navigationController?.setNavigationBarHidden(false, animated: false)
+
+        let navigationBarAppearance = UINavigationBarAppearance()
+        // background color
+//        navigationBarAppearance.configureWithDefaultBackground()
+        navigationBarAppearance.backgroundColor = .black
+        // title color
+//        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.systemRed]
+        //  item color
+        navigationController?.navigationBar.tintColor = .white
+//        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.yellow]
+
+//        navigationItem.standardAppearance = navigationBarAppearance
+//        navigationItem.compactAppearance = navigationBarAppearance
+//        navigationItem.scrollEdgeAppearance = navigationBarAppearance
+
+//        navigationItem.leftBarButtonItem = backButtonItem
+//        navigationItem.rightBarButtonItem = helpButtonItem
+//        navigationItem.titleView = logoImage
     }
 }

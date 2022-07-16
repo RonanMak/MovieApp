@@ -45,6 +45,14 @@
 		7C062A1C2859005D006E4E62 /* HomeConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C062A142859005D006E4E62 /* HomeConfigurator.swift */; };
 		7C062A1D2859005D006E4E62 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C062A152859005D006E4E62 /* HomeViewController.xib */; };
 		7C062A2128590550006E4E62 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C062A2028590550006E4E62 /* Extension.swift */; };
+		7C15621428825ADE005847FB /* DownloadScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C15620C28825ADE005847FB /* DownloadScreenPresenter.swift */; };
+		7C15621528825ADE005847FB /* DownloadScreenWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C15620D28825ADE005847FB /* DownloadScreenWorker.swift */; };
+		7C15621628825ADE005847FB /* DownloadScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C15620E28825ADE005847FB /* DownloadScreenRouter.swift */; };
+		7C15621728825ADE005847FB /* DownloadScreenModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C15620F28825ADE005847FB /* DownloadScreenModels.swift */; };
+		7C15621828825ADE005847FB /* DownloadScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C15621028825ADE005847FB /* DownloadScreenViewController.swift */; };
+		7C15621928825ADE005847FB /* DownloadScreenInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C15621128825ADE005847FB /* DownloadScreenInteractor.swift */; };
+		7C15621A28825ADE005847FB /* DownloadScreenConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C15621228825ADE005847FB /* DownloadScreenConfigurator.swift */; };
+		7C15621B28825ADE005847FB /* DownloadScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C15621328825ADE005847FB /* DownloadScreenViewController.xib */; };
 		7C5CFA8F28680B7B00A1CF61 /* JVFloatLabeledTextField in Frameworks */ = {isa = PBXBuildFile; productRef = 7C5CFA8E28680B7B00A1CF61 /* JVFloatLabeledTextField */; };
 		7C5CFA92286F27A100A1CF61 /* MainTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5CFA91286F27A000A1CF61 /* MainTabbarController.swift */; };
 		7C5CFA95286F292700A1CF61 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5CFA94286F292700A1CF61 /* Constants.swift */; };
@@ -146,6 +154,14 @@
 		7C062A142859005D006E4E62 /* HomeConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeConfigurator.swift; sourceTree = "<group>"; };
 		7C062A152859005D006E4E62 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		7C062A2028590550006E4E62 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		7C15620C28825ADE005847FB /* DownloadScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadScreenPresenter.swift; sourceTree = "<group>"; };
+		7C15620D28825ADE005847FB /* DownloadScreenWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadScreenWorker.swift; sourceTree = "<group>"; };
+		7C15620E28825ADE005847FB /* DownloadScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadScreenRouter.swift; sourceTree = "<group>"; };
+		7C15620F28825ADE005847FB /* DownloadScreenModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadScreenModels.swift; sourceTree = "<group>"; };
+		7C15621028825ADE005847FB /* DownloadScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadScreenViewController.swift; sourceTree = "<group>"; };
+		7C15621128825ADE005847FB /* DownloadScreenInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadScreenInteractor.swift; sourceTree = "<group>"; };
+		7C15621228825ADE005847FB /* DownloadScreenConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadScreenConfigurator.swift; sourceTree = "<group>"; };
+		7C15621328825ADE005847FB /* DownloadScreenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DownloadScreenViewController.xib; sourceTree = "<group>"; };
 		7C5CFA91286F27A000A1CF61 /* MainTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbarController.swift; sourceTree = "<group>"; };
 		7C5CFA94286F292700A1CF61 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7C5CFAA2286F434A00A1CF61 /* SearchScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenPresenter.swift; sourceTree = "<group>"; };
@@ -279,6 +295,7 @@
 		7C0629B42858CD72006E4E62 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				7C15620A28825A86005847FB /* DownloadScreen */,
 				7C5CFA90286F24FD00A1CF61 /* MainTabbar */,
 				7C0629B92858CEBE006E4E62 /* MainScreen */,
 				7C5CFAB2286F436B00A1CF61 /* NewScreen */,
@@ -377,6 +394,21 @@
 				7CFE28232860B28700A68D5C /* HomeCarouselView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		7C15620A28825A86005847FB /* DownloadScreen */ = {
+			isa = PBXGroup;
+			children = (
+				7C15620C28825ADE005847FB /* DownloadScreenPresenter.swift */,
+				7C15620D28825ADE005847FB /* DownloadScreenWorker.swift */,
+				7C15620E28825ADE005847FB /* DownloadScreenRouter.swift */,
+				7C15620F28825ADE005847FB /* DownloadScreenModels.swift */,
+				7C15621028825ADE005847FB /* DownloadScreenViewController.swift */,
+				7C15621128825ADE005847FB /* DownloadScreenInteractor.swift */,
+				7C15621228825ADE005847FB /* DownloadScreenConfigurator.swift */,
+				7C15621328825ADE005847FB /* DownloadScreenViewController.xib */,
+			);
+			path = DownloadScreen;
 			sourceTree = "<group>";
 		};
 		7C5CFA90286F24FD00A1CF61 /* MainTabbar */ = {
@@ -585,6 +617,7 @@
 				7C06298C2858C8BE006E4E62 /* Main.storyboard in Resources */,
 				7C5CFAC2286F438000A1CF61 /* NewScreenViewController.xib in Resources */,
 				7C5CFAC3286F5B4400A1CF61 /* Localizable (English).strings in Resources */,
+				7C15621B28825ADE005847FB /* DownloadScreenViewController.xib in Resources */,
 				7C062A1D2859005D006E4E62 /* HomeViewController.xib in Resources */,
 				7C5CFAB1286F434A00A1CF61 /* SearchScreenViewController.xib in Resources */,
 				7C0629FD2859001D006E4E62 /* MainViewController.xib in Resources */,
@@ -616,12 +649,15 @@
 				7C062A162859005D006E4E62 /* HomePresenter.swift in Sources */,
 				7CF855CF287A88E700ACDE77 /* SignUpModels.swift in Sources */,
 				7C0629F62859001D006E4E62 /* MainPresenter.swift in Sources */,
+				7C15621828825ADE005847FB /* DownloadScreenViewController.swift in Sources */,
 				7CF855D2287A88E700ACDE77 /* SignUpConfigurator.swift in Sources */,
 				7C5CFABD286F438000A1CF61 /* NewScreenRouter.swift in Sources */,
 				7C5CFABB286F438000A1CF61 /* NewScreenPresenter.swift in Sources */,
 				7CF855D0287A88E700ACDE77 /* SignUpViewController.swift in Sources */,
 				7CF855D5287AB9CB00ACDE77 /* Helper.swift in Sources */,
 				7C062A192859005D006E4E62 /* HomeModels.swift in Sources */,
+				7C15621628825ADE005847FB /* DownloadScreenRouter.swift in Sources */,
+				7C15621A28825ADE005847FB /* DownloadScreenConfigurator.swift in Sources */,
 				7CF855D1287A88E700ACDE77 /* SignUpInteractor.swift in Sources */,
 				7C5CFABF286F438000A1CF61 /* NewScreenViewController.swift in Sources */,
 				7CFE281A285E19D600A68D5C /* PrivacyModels.swift in Sources */,
@@ -633,6 +669,8 @@
 				7C0629F72859001D006E4E62 /* MainWorker.swift in Sources */,
 				7C0629FB2859001D006E4E62 /* MainInteractor.swift in Sources */,
 				7C5CFAC0286F438000A1CF61 /* NewScreenInteractor.swift in Sources */,
+				7C15621928825ADE005847FB /* DownloadScreenInteractor.swift in Sources */,
+				7C15621728825ADE005847FB /* DownloadScreenModels.swift in Sources */,
 				7C5CFAAF286F434A00A1CF61 /* SearchScreenInteractor.swift in Sources */,
 				7C062A062859003E006E4E62 /* SignInPresenter.swift in Sources */,
 				7C5CFAAE286F434A00A1CF61 /* SearchScreenViewController.swift in Sources */,
@@ -653,6 +691,7 @@
 				7C5CFABE286F438000A1CF61 /* NewScreenModels.swift in Sources */,
 				7CFE281C285E19D600A68D5C /* PrivacyInteractor.swift in Sources */,
 				7C5CFAAC286F434A00A1CF61 /* SearchScreenRouter.swift in Sources */,
+				7C15621528825ADE005847FB /* DownloadScreenWorker.swift in Sources */,
 				7C062A172859005D006E4E62 /* HomeWorker.swift in Sources */,
 				7CFE2818285E19D600A68D5C /* PrivacyWorker.swift in Sources */,
 				7C5CFAC1286F438000A1CF61 /* NewScreenConfigurator.swift in Sources */,
@@ -660,6 +699,7 @@
 				7C5CFABC286F438000A1CF61 /* NewScreenWorker.swift in Sources */,
 				7CFE281D285E19D600A68D5C /* PrivacyConfigurator.swift in Sources */,
 				7C062A1A2859005D006E4E62 /* HomeViewController.swift in Sources */,
+				7C15621428825ADE005847FB /* DownloadScreenPresenter.swift in Sources */,
 				7C0629FA2859001D006E4E62 /* MainViewController.swift in Sources */,
 				7C0629F82859001D006E4E62 /* MainRouter.swift in Sources */,
 				7C5CFAAD286F434A00A1CF61 /* SearchScreenModels.swift in Sources */,

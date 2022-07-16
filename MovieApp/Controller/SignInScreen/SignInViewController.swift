@@ -224,7 +224,7 @@ class SignInViewController: UIViewController
             strongSelf.activityIndicator.startAnimating()
             strongSelf.view.isUserInteractionEnabled = false
         }
-        
+
         let request = SignIn.SignIn.Request(email: email, password: password)
         interactor?.requestSignIn(request: request)
     }
@@ -293,7 +293,6 @@ extension SignInViewController: SignInDisplayLogic {
             dismiss(animated: true)
         } else {
             Helper.Alert.showAlert(viewController: self, title: viewModel.alertTitle, message: viewModel.alertMessage)
-            emailTextField.text = ""
             passwordTextField.text = ""
         }
     }

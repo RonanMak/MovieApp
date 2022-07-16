@@ -12,21 +12,25 @@ class MainTabbarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tabBar.barStyle = .black
-        self.tabBar.tintColor = .orange
-        self.tabBar.unselectedItemTintColor = .black
-        self.tabBar.isTranslucent = false
+        tabBar.barStyle = .black
+        tabBar.tintColor = .white
+        tabBar.unselectedItemTintColor = .gray
+        tabBar.isTranslucent = false
+        tabBar.backgroundColor = .black
 
         let mainController = MainConfigurator.createScene()
         mainController.tabBarItem = UITabBarItem.init(title: Constants.Tabbar.home, image: UIImage(systemName: "house"), tag: 0)
 
-        let NewController = NewScreenConfigurator.createScene()
-        NewController.tabBarItem = UITabBarItem.init(title: Constants.Tabbar.new, image: UIImage(systemName: "play.rectangle.on.rectangle.fill"), tag: 1)
+        let newController = NewScreenConfigurator.createScene()
+        newController.tabBarItem = UITabBarItem.init(title: Constants.Tabbar.new, image: UIImage(systemName: "play.rectangle.on.rectangle.fill"), tag: 1)
 
-        let SearchController = SearchScreenConfigurator.createScene()
-        SearchController.tabBarItem = UITabBarItem.init(title: Constants.Tabbar.search, image: UIImage(systemName: "magnifyingglass"), tag: 2)
+        let searchController = SearchScreenConfigurator.createScene()
+        searchController.tabBarItem = UITabBarItem.init(title: Constants.Tabbar.search, image: UIImage(systemName: "magnifyingglass"), tag: 2)
 
-        let tabBarList = [mainController, NewController, SearchController]
+        let downloadController = DownloadScreenConfigurator.createScene()
+        downloadController.tabBarItem = UITabBarItem.init(title: Constants.Tabbar.download, image: UIImage(systemName: "arrow.down.circle.fill"), tag: 3)
+
+        let tabBarList = [mainController, newController, searchController, downloadController]
         viewControllers = tabBarList
     }
 }

@@ -13,6 +13,7 @@ enum Constants {
         static let home = "Home"
         static let new = "New & Hot"
         static let search = "Search"
+        static let download = "Download"
     }
 
     enum Dimen {

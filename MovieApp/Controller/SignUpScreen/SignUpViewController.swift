@@ -184,7 +184,6 @@ extension SignUpViewController: SignUpDisplayLogic {
             dismiss(animated: true)
         } else {
             Helper.Alert.showAlert(viewController: self, title: viewModel.alertTitle, message: viewModel.alertMessage)
-            emailTextField.text = ""
             passwordTextField.text = ""
         }
     }
