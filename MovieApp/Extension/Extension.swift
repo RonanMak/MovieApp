@@ -39,6 +39,56 @@ extension UIButton {
         button.heightAnchor.constraint(equalToConstant: 48).isActive = true
         return button
     }
+
+    //  MainScreen
+    func topImagePlacementButton() -> UIButton {
+        let button = UIButton()
+
+        var config = UIButton.Configuration.plain()
+        config.title = ""
+        config.titleAlignment = .center
+        config.titlePadding = 10.0
+        config.baseForegroundColor = .white
+        config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { incoming in
+            var outgoing = incoming
+            outgoing.font =  UIFont.boldSystemFont(ofSize: 12)
+            return outgoing
+           }
+
+        config.background.backgroundColor = .clear
+
+        config.imagePadding = 5
+        config.imagePlacement = .top
+
+        config.background.cornerRadius = 3
+
+        button.configuration = config
+        return button
+    }
+
+    func leftImagePlacementButton() -> UIButton {
+        let button = UIButton()
+
+        var config = UIButton.Configuration.filled()
+        config.titleAlignment = .center
+        config.titlePadding = 10.0
+        config.baseForegroundColor = .black
+        config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { incoming in
+            var outgoing = incoming
+            outgoing.font = UIFont.boldSystemFont(ofSize: 12)
+            return outgoing
+           }
+
+        config.background.backgroundColor = .white
+
+        config.imagePlacement = .leading
+        config.imagePadding = 10
+
+        config.background.cornerRadius = 3
+
+        button.configuration = config
+        return button
+    }
 }
 
 // MARK: - JVFloatLabeledTextField
@@ -188,8 +238,8 @@ extension UIViewController {
         indicatorView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
 
-    func setupNavigationBar(backgroundColor: UIColor, titleTextColor: UIColor, itemTintColor: UIColor ) {
-        navigationController?.setNavigationBarHidden(false, animated: false)
+    func setupNavigationBar(setNavigationBarHidden: Bool, backgroundColor: UIColor, titleTextColor: UIColor, itemTintColor: UIColor) {
+        navigationController?.setNavigationBarHidden(setNavigationBarHidden, animated: true)
 
         let navigationBarAppearance = UINavigationBarAppearance()
         // background color

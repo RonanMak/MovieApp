@@ -13,40 +13,39 @@ class MainHeaderView: UIView {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.image = UIImage(named: "obi-wan")
+        imageView.image = UIImage(named: "obi-wan3")
         imageView.translatesAutoresizingMaskIntoConstraints = false
 
         return imageView
     }()
 
     private lazy var playButton: UIButton = {
-        let button = UIButton()
-
-        var config = UIButton.Configuration.filled()
-        config.title = "Play"
-        config.titleAlignment = .center
-        config.titlePadding = 10.0
-        config.baseForegroundColor = .black
-        config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { incoming in
-            var outgoing = incoming
-            outgoing.font = UIFont.systemFont(ofSize: 12)
-            return outgoing
-           }
-
-        config.background.backgroundColor = .white
-
-        config.image = UIImage(systemName: "play.fill",
+        let button = UIButton().leftImagePlacementButton()
+        button.configuration?.title = "Play"
+        button.configuration?.image = UIImage(systemName: "play.fill",
                                withConfiguration: UIImage.SymbolConfiguration(scale: .small))
-        config.imagePlacement = .leading
-        config.imagePadding = 10
-
-        config.background.cornerRadius = 3
-
-        button.configuration = config
-
         button.addTarget(self, action: #selector(handlePlayButton), for: .touchUpInside)
         return button
     }()
+
+    private lazy var myListButton: UIButton = {
+        let button = UIButton().topImagePlacementButton()
+        button.configuration?.title = "My List"
+        button.configuration?.image = UIImage(systemName: "plus",
+                               withConfiguration: UIImage.SymbolConfiguration(scale: .small))
+        button.addTarget(self, action: #selector(handleMyList), for: .touchUpInside)
+        return button
+    }()
+
+    private lazy var infoButton: UIButton = {
+        let button = UIButton().topImagePlacementButton()
+        button.configuration?.title = "Info"
+        button.configuration?.image = UIImage(systemName: "info.circle",
+                               withConfiguration: UIImage.SymbolConfiguration(scale: .small))
+        button.addTarget(self, action: #selector(handleInfo), for: .touchUpInside)
+        return button
+    }()
+
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -66,6 +65,8 @@ class MainHeaderView: UIView {
         addSubview(mainHeaderImageView)
         addGradient()
         addSubview(playButton)
+        addSubview(myListButton)
+        addSubview(infoButton)
     }
 
     func setupConstraint() {
@@ -73,12 +74,18 @@ class MainHeaderView: UIView {
 
         playButton.anchor(bottom: bottomAnchor, paddingBottom: 50, width: 76, height: 24)
         playButton.centerX(inView: self)
+
+        myListButton.anchor(left: leftAnchor, paddingLeft: 50, width: 70, height: 70)
+        myListButton.centerYAnchor.constraint(equalTo: playButton.centerYAnchor).isActive = true
+
+        infoButton.anchor(right: rightAnchor, paddingRight: 50, width: 70, height: 70)
+        infoButton.centerYAnchor.constraint(equalTo: playButton.centerYAnchor).isActive = true
     }
 
     private func addGradient() {
         let colors = [
             UIColor.clear.cgColor,
-            UIColor.systemBackground.cgColor
+            UIColor.black.cgColor
         ]
 
         let gradientLayer = CAGradientLayer()
@@ -91,5 +98,13 @@ class MainHeaderView: UIView {
 
     @objc func handlePlayButton() {
         print("jhijhi")
+    }
+
+    @objc func handleMyList() {
+        print("sdjiosajoi123123")
+    }
+
+    @objc func handleInfo() {
+
     }
 }

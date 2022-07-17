@@ -56,10 +56,15 @@ class MainViewController: UIViewController, MainDisplayLogic
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        mainFeedTableView.frame = view.bounds
-    }
-    // MARL: - Setup views
 
+        let height = view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+
+        let navigationBarHeight: CGFloat = navigationController?.navigationBar.frame.height ?? 0
+        
+        mainFeedTableView.anchor(top: view.topAnchor, bottom: view.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: -(navigationBarHeight + height))
+    }
+
+    // MARL: - Setup views
     private func setupViews() {
         view.addSubview(mainFeedTableView)
         mainFeedTableView.tableHeaderView = mainTableHeaderView
@@ -76,22 +81,29 @@ class MainViewController: UIViewController, MainDisplayLogic
     private func setupConstraint() {
     }
 
-    // MARL: - Setup navigation bar
+    // MARK: - Status Bar
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+
+    // MARK: - Setup navigation bar
+
     func setupNavigationBar() {
-        let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "house")
-          imageView.heightAnchor.constraint(equalToConstant: 30).isActive = true
-          imageView.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        navigationController?.setNavigationBarHidden(false, animated: false)
 
-          let titleLabel = UILabel()
-          titleLabel.text = "Your title"
+        let navigationBarAppearance = UINavigationBarAppearance()
+        
+        // background color
+        navigationBarAppearance.configureWithTransparentBackground()
 
-          let stackView = UIStackView(arrangedSubviews: [imageView, titleLabel])
-          stackView.spacing = 5
-          stackView.alignment = .center
+        // title color
+        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.systemRed]
 
-          // This will assing your custom view to navigation title.
-          navigationItem.titleView = stackView
+        navigationItem.standardAppearance = navigationBarAppearance
+        navigationItem.compactAppearance = navigationBarAppearance
+        navigationItem.scrollEdgeAppearance = navigationBarAppearance
+
+        navigationItem.title = "dkfjsdjkfhl"
     }
 
     @objc func handleSignIn() {
@@ -131,5 +143,13 @@ extension MainViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40
+    }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let defaultOffset = view.safeAreaInsets.top
+        let offset = scrollView.contentOffset.y + defaultOffset
+
+        navigationController?.navigationBar.transform = .init(translationX: 0, y: min(0, -offset ))
+
     }
 }

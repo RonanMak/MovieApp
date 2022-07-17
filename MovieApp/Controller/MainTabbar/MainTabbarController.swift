@@ -20,6 +20,7 @@ class MainTabbarController: UITabBarController {
 
         let mainController = MainConfigurator.createScene()
         mainController.tabBarItem = UITabBarItem.init(title: Constants.Tabbar.home, image: UIImage(systemName: "house"), tag: 0)
+        let mainNavigationController = UINavigationController(rootViewController: mainController)
 
         let newController = NewScreenConfigurator.createScene()
         newController.tabBarItem = UITabBarItem.init(title: Constants.Tabbar.new, image: UIImage(systemName: "play.rectangle.on.rectangle.fill"), tag: 1)
@@ -30,7 +31,7 @@ class MainTabbarController: UITabBarController {
         let downloadController = DownloadScreenConfigurator.createScene()
         downloadController.tabBarItem = UITabBarItem.init(title: Constants.Tabbar.download, image: UIImage(systemName: "arrow.down.circle.fill"), tag: 3)
 
-        let tabBarList = [mainController, newController, searchController, downloadController]
+        let tabBarList = [mainNavigationController, newController, searchController, downloadController]
         viewControllers = tabBarList
     }
 }
