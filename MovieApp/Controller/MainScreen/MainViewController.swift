@@ -60,7 +60,7 @@ class MainViewController: UIViewController, MainDisplayLogic
         let height = view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
 
         let navigationBarHeight: CGFloat = navigationController?.navigationBar.frame.height ?? 0
-        
+
         mainFeedTableView.anchor(top: view.topAnchor, bottom: view.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: -(navigationBarHeight + height))
     }
 
@@ -107,11 +107,11 @@ class MainViewController: UIViewController, MainDisplayLogic
     }
 
     @objc func handleSignIn() {
-//        let vc = HomeConfigurator.createScene()
-//        let nav = UINavigationController(rootViewController: vc)
-//        nav.modalPresentationStyle = .fullScreen
-//        nav.setNavigationBarHidden(true, animated: false)
-//        self.present(nav, animated: true)
+        let vc = HomeConfigurator.createScene()
+        let nav = UINavigationController(rootViewController: vc)
+        nav.modalPresentationStyle = .fullScreen
+        nav.setNavigationBarHidden(true, animated: false)
+        self.present(nav, animated: true)
     }
 }
 
